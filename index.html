@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="fr"><head>
+<!-- Human Wealth V18.6.2 PC/Web. --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HUMAN WEALTH — V18.6.2 PC / WEB</title>
+<style>
+:root{--deep:#0E403A;--forest:#225C4B;--gold:#CFAE61;--ivory:#F8F4EA;--char:#1F2725;--muted:#6D7875;--line:#DDE5E0;--soft:#EEF5F1}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--char);background:linear-gradient(145deg,#eef6f1,#fbf8ef)}
+header{position:sticky;top:0;z-index:20;background:#050505f5;color:#fff;padding:8px 4vw;display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid #cfae6155;overflow:visible}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.06em;overflow:visible}.brand-logo{display:block;width:92px;height:auto;max-width:92px;max-height:none;aspect-ratio:auto;background:#000;border:0;border-radius:0;flex:0 0 auto}.brand-copy{display:flex;flex-direction:column;gap:2px}.brand-name{font-size:17px}.brand-baseline{font-size:9px;letter-spacing:.18em;color:#ead49b}.gold{color:var(--gold)}.langs{display:flex;gap:6px}.lang{border:1px solid #cfae6177;background:transparent;color:#fff;border-radius:999px;padding:7px 10px;font-weight:900;cursor:pointer}.lang.active{background:var(--gold);color:#050505}
+main{max-width:1080px;margin:auto;padding:26px 16px 80px}.card{background:#fff;border-radius:26px;padding:clamp(18px,4vw,30px);box-shadow:0 16px 44px #174b3816}.eyebrow{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900;color:var(--forest)}h1{font-size:clamp(30px,5vw,50px);margin:6px 0}h2{margin:6px 0 12px}.muted{color:var(--muted)}.bar{height:10px;background:#e8eeea;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--forest),var(--gold))}
+.answers.scale{display:grid;grid-template-columns:repeat(11,1fr);gap:7px}.answers.yesno{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:1px solid var(--line);background:#fff;color:var(--deep);border-radius:14px;padding:13px;font-weight:900;cursor:pointer}.btn:hover,.btn.active{background:var(--deep);color:#fff}.nav{display:flex;gap:8px;justify-content:space-between;margin-top:18px}.nav .btn{min-width:120px}
+.scoregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.score{padding:15px;border-radius:18px;border:2px solid var(--line)}.score b{font-size:26px;display:block}.r{background:#fff0f0;border-color:#d84a4a}.o{background:#fff5e7;border-color:#e58a2b}.g{background:#edf8ef;border-color:#3e9b5f}.axes{display:grid;gap:9px}.axis{padding:13px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.spaces{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.space{border:1px solid var(--line);border-radius:22px;padding:18px;background:#fff;display:flex;flex-direction:column}.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}.mode{border:1px solid var(--line);background:var(--soft);color:var(--deep);border-radius:13px;padding:11px;font-weight:900;cursor:pointer}.mode:hover{background:var(--deep);color:#fff}.workspace{display:none;margin-top:18px;border-top:1px solid var(--line);padding-top:20px}.workspace.show{display:block}.lessonlist{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.lesson{padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff}.books{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}.book{padding:12px;background:var(--soft);border-radius:13px}.actionbox{padding:16px;background:var(--soft);border-radius:16px}textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:13px;padding:11px;font:inherit;resize:vertical;background:#fff}.checkresult{margin-top:10px;padding:11px;border-radius:12px;background:#fff}.packages{margin-top:28px}.packagegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.package{border:1px solid var(--line);border-radius:20px;padding:16px}.price{font-size:28px;font-weight:900;color:var(--deep)}.old{text-decoration:line-through;color:var(--muted);font-size:13px}.timer{padding:9px;border:1px solid #edc36b;background:#fff7e8;border-radius:12px;font-weight:900;text-align:center;margin:10px 0}
+@media(max-width:760px){.scoregrid,.spaces,.packagegrid{grid-template-columns:1fr}.lessonlist,.books{grid-template-columns:1fr}.answers.scale{grid-template-columns:repeat(5,1fr)}.brand-logo{width:68px;max-width:68px;height:auto;max-height:none}.brand-baseline{display:none}}
+</style>
+<style>
+.hp-offer-timer{
+  display:inline-flex;align-items:center;gap:5px;margin-top:7px;
+  font-size:12px;font-weight:700;letter-spacing:.04em;opacity:.9;
+}
+.hp-hourglass{display:inline-block;font-size:14px;line-height:1;animation:hpHourglass 1.8s ease-in-out infinite}
+.hp-countdown{font-variant-numeric:tabular-nums}
+@keyframes hpHourglass{0%,100%{transform:rotate(0deg)}50%{transform:rotate(180deg)}}
+@media (prefers-reduced-motion:reduce){.hp-hourglass{animation:none}}
+</style>
+
+
+<style>
+.hp-offer-timer{
+  display:inline-flex !important;
+  align-items:center;
+  gap:4px;
+  margin-top:6px;
+  font-size:11px !important;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:.03em;
+  opacity:.88;
+}
+.hp-offer-timer .hp-hourglass{
+  font-size:12px !important;
+  line-height:1;
+}
+.hp-offer-timer .hp-countdown{
+  font-size:11px !important;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+</style>
+
+
+<style>
+.result-block{margin-top:22px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.result-block h2{margin:0 0 10px;font-size:18px}
+.result-block h3{margin:4px 0 12px}
+.profile-lines{display:grid;gap:7px}
+.profile-line{padding:8px 10px;border-radius:10px;background:rgba(0,0,0,.025);font-size:14px}
+.timer{display:inline-flex;align-items:center;gap:4px;padding:7px 9px;border:1px solid #edc36b;background:#fff7e8;border-radius:12px;font-weight:900;text-align:center;margin:10px 0;font-size:11px;line-height:1;font-variant-numeric:tabular-nums}
+.timer .glass{font-size:12px;display:inline-block;animation:hpHourglass 1.8s ease-in-out infinite}
+@keyframes hpHourglass{0%,100%{transform:rotate(0)}50%{transform:rotate(180deg)}}
+@media (prefers-reduced-motion:reduce){.timer .glass{animation:none}}
+</style>
+
+<style>
+.book-list{display:grid;gap:8px;margin-top:14px}
+.book-btn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;cursor:pointer;font:inherit}
+.book-btn b{display:block;margin-bottom:3px}
+.book-btn span{font-size:13px;opacity:.72}
+.book-summary{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.02);line-height:1.5}
+.book-summary h4{margin:0 0 8px}
+</style>
+
+
+<style>
+.score{color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.28)}
+.score.hp10-1{background:#d7191c!important}.score.hp10-2{background:#e63b22!important}
+.score.hp10-3{background:#f05a28!important}.score.hp10-4{background:#f47b20!important}
+.score.hp10-5{background:#f39c12!important}.score.hp10-6{background:#d9a514!important}
+.score.hp10-7{background:#9fae1b!important}.score.hp10-8{background:#69a82b!important}
+.score.hp10-9{background:#328b3d!important}.score.hp10-10{background:#126b35!important}
+.offer-benefit{font-size:13px;line-height:1.4;margin:8px 0 2px;opacity:.78}
+</style>
+
+
+<style>
+.hp-learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;align-items:start}
+.hp-learn-col{min-width:0;border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+.hp-learn-col h4{margin:0 0 10px;font-size:14px;letter-spacing:.06em}
+.hp-lessons{display:grid;gap:8px}
+.hp-lesson{padding:10px;border-radius:10px;background:rgba(0,0,0,.025);font-size:13px;line-height:1.4}
+@media(max-width:520px){.hp-learn-grid{grid-template-columns:1fr 1fr;gap:8px}.hp-learn-col{padding:10px}.book-btn{padding:10px}}
+</style>
+
+
+<style>
+body{background:radial-gradient(circle at 12% 0%,rgba(196,155,74,.10),transparent 28%),radial-gradient(circle at 90% 10%,rgba(45,88,75,.07),transparent 25%),#f7f6f2}
+.package{position:relative;overflow:hidden;border-radius:20px!important;padding:19px!important;box-shadow:0 10px 30px rgba(20,28,38,.08);transition:transform .2s ease,box-shadow .2s ease}
+.package:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#9e7731,#e0c577,#8b6728)}
+.package:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(20,28,38,.12)}
+.offer-tagline{font-size:13px;font-style:italic;opacity:.72;margin:4px 0 11px}
+.package .price{font-size:22px;font-weight:900}
+.package .offer-benefit{font-size:13px;line-height:1.5;padding-top:10px;border-top:1px solid var(--line)}
+.result-block,.hp-learn-col,.space{box-shadow:0 8px 24px rgba(20,28,38,.06)}
+</style>
+
+<style>
+.hp-lesson summary{cursor:pointer;list-style:none;line-height:1.35}
+.hp-lesson summary::-webkit-details-marker{display:none}
+.hp-lesson summary:after{content:"＋";float:right;opacity:.5}
+.hp-lesson[open] summary:after{content:"−"}
+.hp-lesson-text{padding-top:8px;font-size:12.5px;line-height:1.5;opacity:.82}
+</style>
+<style>
+.hp-lesson-btn{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 12px;cursor:pointer;font:inherit;line-height:1.35}
+.hp-lesson-btn:hover{background:rgba(0,0,0,.025)}
+.hp-lessons{display:grid;gap:8px}
+</style>
+
+<style>
+.hp-analysis-space{padding:12px 0;border-bottom:1px solid var(--line)}
+.hp-analysis-space:last-child{border-bottom:0}
+.hp-analysis-space h4{margin:0 0 7px;font-size:15px}
+.hp-analysis-space p{margin:0;line-height:1.6}
+.answers.scale5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.scale5 .scale-choice{min-height:54px;padding:8px 4px;font-size:16px}.scale-legend{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:10px;color:var(--muted);font-size:11px;text-align:center}.engagement-callout{margin-top:15px;padding:15px 17px;border-radius:15px;background:linear-gradient(135deg,#fff7df,#f3ddb0);border:1px solid #d5ab50;color:#251a08}.engagement-callout b{color:#6d4808}
+.question-back-wrap{margin-top:18px;display:flex;justify-content:flex-start}.question-back{border:1px solid #c99b3d;background:#fff8e8;color:#3b2908;border-radius:999px;padding:10px 16px;font-weight:850;cursor:pointer}.question-back:hover,.question-back:focus-visible{background:linear-gradient(135deg,#ffe7a3,#c9932f);color:#090704;outline:2px solid #d5aa52;outline-offset:2px}
+#results>.result-block:nth-of-type(1) .hp-analysis-space p,#results>.result-block:nth-of-type(2) .hp-analysis-space p{line-height:1.45;margin:0;overflow:visible}
+</style>
+<style>
+.hp-satisfaction{margin-top:14px;padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.72)}
+.hp-sat-label{font-size:12px;font-weight:800;letter-spacing:.04em;margin-bottom:8px}
+.hp-sat-scale{display:grid;grid-template-columns:repeat(11,1fr);gap:4px}
+.hp-sat-btn{min-width:0;padding:7px 0;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font-size:11px;font-weight:700}
+.hp-sat-btn:hover{transform:translateY(-1px)}
+.hp-followup{margin-top:10px;padding:10px;border-radius:10px;background:rgba(0,0,0,.025);font-size:12.5px;line-height:1.45}
+.hp-mcq{display:grid;gap:6px;margin-top:8px}
+.hp-mcq button{width:100%;text-align:left}
+</style>
+
+
+<style>
+.commit-btn{width:100%;margin-top:12px;padding:12px 14px;border:0;border-radius:12px;background:#111;color:#fff;font-weight:800;cursor:pointer}
+.hp-phase{margin:24px 0 10px;padding:10px 14px;border-radius:999px;background:#f4ead7;color:#7f1d1d;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;display:inline-flex}
+.hp-workspace-gate{display:none;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.hp-workspace-gate.show{display:block}
+.hp-paybox{margin-top:22px;padding:20px;border:1px solid rgba(127,29,29,.22);border-radius:18px;background:#fffaf2}
+.hp-paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hp-paygrid input{width:100%;box-sizing:border-box;padding:12px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff}.hp-pay-actions{margin-top:12px}
+@media(max-width:620px){.hp-paygrid{grid-template-columns:1fr}}
+.hp-paybox{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.hp-paygrid{display:grid;gap:10px}
+.hp-paygrid input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;font:inherit}
+.hp-pay-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+</style>
+
+<style>.axis-baseline{display:block;margin-top:5px;font-size:12px;line-height:1.35;opacity:.72;font-weight:500}</style>
+<style>
+.hp-axis-line{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:10px 0;
+}
+.hp-axis-title{
+  font-weight:800;
+}
+.hp-axis-baseline{
+  color:#7f1d1d;
+  font-size:1.16em;
+  font-weight:800;
+  line-height:1.25;
+}
+</style>
+
+
+<style id="hp-v1729-lasuite">
+.axes .axis{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:baseline !important;
+  flex-wrap:nowrap !important;
+  gap:10px !important;
+  width:100% !important;
+}
+.axes .axis > b{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+}
+.axes .axis .axis-baseline{
+  display:inline !important;
+  margin-top:0 !important;
+  color:#7f1d1d !important;
+  opacity:1 !important;
+  font-size:17px !important;
+  line-height:1.3 !important;
+  font-weight:800 !important;
+}
+@media(max-width:520px){
+  .axes .axis{gap:7px !important;}
+  .axes .axis .axis-baseline{font-size:16px !important;}
+}
+</style>
+
+
+<style id="hp-v1730-analysis">
+.hp-analysis-lines{display:grid;gap:7px;margin:8px 0 2px}
+.hp-analysis-line{font-size:14px;line-height:1.45}
+.hp-analysis-line b{font-weight:800}
+.hp-analysis-space h4{margin-bottom:8px}
+</style>
+
+
+<style id="hp-v18-ai">
+.ai-enrich{margin-top:22px;padding:18px;border:1px solid rgba(127,29,29,.18);border-radius:18px;background:rgba(255,255,255,.72)}
+.ai-enrich h3{margin:0 0 7px}.ai-enrich .sub{opacity:.72;font-size:13px;margin-bottom:14px}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ai-grid .full{grid-column:1/-1}
+.ai-field label{display:block;font-size:12px;font-weight:800;margin-bottom:5px}
+.ai-field input,.ai-field textarea{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d8d1c7;border-radius:11px;background:#fff;font:inherit}
+.ai-field textarea{min-height:74px;resize:vertical}
+.ai-consent{display:flex;gap:8px;align-items:flex-start;font-size:12px;margin:12px 0}
+.ai-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ai-btn{border:0;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;background:#7f1d1d;color:#fff}
+.ai-btn.secondary{background:#eee7dc;color:#3a3027}
+.ai-status{margin-top:10px;font-size:12px;font-weight:700}
+.ai-understood{margin-top:14px;padding:13px;border-radius:13px;background:#f6f1e8}
+.ai-understood ul{margin:8px 0 0 18px;padding:0}
+@media(max-width:620px){.ai-grid{grid-template-columns:1fr}.ai-grid .full{grid-column:auto}}
+</style>
+
+<style id="human-wealth-premium-v183">
+:root{--deep:#090909;--forest:#17120a;--gold:#d9ad4e;--ivory:#fffaf0;--char:#17130d;--muted:#746955;--line:#dccb9d;--soft:#f5ecd8}
+html{background:#050505}
+body{background:radial-gradient(circle at 50% 0,#31220b 0,#0d0b08 34%,#050505 72%);color:var(--char);min-height:100vh}
+header{position:sticky;top:0;z-index:20;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;overflow:visible;padding:8px 4vw;background:linear-gradient(180deg,#050505 0%,#0c0905 100%);border-bottom:1px solid #d9ad4e80;box-shadow:0 14px 40px #0009}
+.header-spacer{min-width:1px}
+.brand{display:block;overflow:visible;justify-self:center;line-height:0}
+.brand-logo{display:block;width:180px;max-width:180px;height:auto;max-height:none;aspect-ratio:auto;border:0;border-radius:0;background:#000;box-shadow:none}
+.langs{justify-self:end;display:flex;gap:7px}
+.lang{border:1px solid #d9ad4e88;background:#0b0b0b;color:#f8ebc9;border-radius:999px;padding:8px 11px;font-weight:900;cursor:pointer;box-shadow:inset 0 0 0 1px #ffffff08}
+.lang:hover{border-color:#f5d986;color:#fff3cf}.lang.active,.lang.active:hover{background:linear-gradient(135deg,#ffe7a3,#c9932f);color:#070707;border-color:#ffe3a0;box-shadow:0 0 0 2px #d9ad4e30,0 5px 16px #d9ad4e35}
+main{max-width:1120px;padding:34px 16px 90px}
+.app-intro{margin:0 auto 22px;padding:22px 26px;border:1px solid #d9ad4e88;border-radius:22px;background:linear-gradient(145deg,#151008ee,#070605ee);box-shadow:0 20px 55px #0008;text-align:center;color:#fff8e8}
+.app-intro p{margin:5px 0;font-size:clamp(14px,1.65vw,17px);line-height:1.5}.app-intro p:first-child{color:#f0d184;font-weight:900;font-size:clamp(16px,1.9vw,20px)}
+.card{background:linear-gradient(145deg,#fffdf8,#f6edda);border:1px solid #e7cf91;border-radius:28px;box-shadow:0 26px 80px #0009,0 0 0 1px #fff8 inset;padding:clamp(20px,4vw,36px)}
+.eyebrow{color:#90631d;letter-spacing:.16em}
+h1,h2,h3{color:#15100a}
+.bar{background:#dfd4bc}.bar i{background:linear-gradient(90deg,#8d5f16,#f1d786,#a8741f)}
+.btn,.mode{border-color:#cdb477;background:#fffdf8;color:#17110a;box-shadow:0 4px 14px #4c310b12}
+.btn:hover,.btn.active,.mode:hover{background:linear-gradient(135deg,#1a160f,#050505);color:#f4d789;border-color:#d9ad4e}
+.answers.yesno{max-width:620px;margin:22px auto 0;grid-template-columns:1fr 1fr;gap:14px}.answers.yesno .btn{font-size:18px;padding:17px}.answers.yesno .yes-btn{border-color:#9d7a31}.answers.yesno .no-btn{border-color:#756b5a}
+.deep-analysis{margin-top:22px;padding:22px;border:1px solid #d4b66c;border-radius:20px;background:linear-gradient(145deg,#fffdf8,#f2e4c4);box-shadow:0 14px 34px #5f3b0818}.deep-analysis h2{margin-bottom:6px}.deep-analysis .analysis-lead{color:#625641;margin-top:0}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.analysis-panel{padding:16px;border:1px solid #d8c28d;border-radius:15px;background:#fffdf8}.analysis-panel h3{margin:0 0 9px;color:#805819}.analysis-panel ul{margin:0;padding-left:19px}.analysis-panel li{margin:7px 0;line-height:1.45}.analysis-priority{grid-column:1/-1;background:linear-gradient(135deg,#15110b,#050505);color:#fff4d8;border-color:#d7ab4c}.analysis-priority h3{color:#f0d184}.analysis-priority b{color:#f5d98a}@media(max-width:700px){.analysis-grid{grid-template-columns:1fr}.analysis-priority{grid-column:auto}}
+.score,.axis,.space,.package,.lesson,.book,.actionbox,.checkresult,.ai-enrich{border-color:#d8c28d!important;background:linear-gradient(145deg,#fffefa,#f4ead4)!important;box-shadow:0 10px 24px #62400b12}
+.score.r{border-color:#8f2323!important;background:linear-gradient(145deg,#c83e3e,#9f2727)!important}.score.o{border-color:#a85b08!important;background:linear-gradient(145deg,#ed941f,#c96a08)!important}.score.g{border-color:#17613d!important;background:linear-gradient(145deg,#2f9963,#1f744b)!important}
+.scoregrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0 28px}
+.score{min-height:132px;padding:20px 22px!important;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden}
+.score b{display:block;width:100%;margin:0 0 12px;padding:0 0 10px;border-bottom:1px solid #9b7a384d;font-size:clamp(30px,4vw,40px);line-height:1;color:#17110a;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.score span{display:block;width:100%;font-size:clamp(15px,1.7vw,18px);font-weight:900;line-height:1.35;color:#211a10;overflow-wrap:anywhere;word-break:normal}
+.score.r b,.score.r span,.score.o b,.score.o span,.score.g b,.score.g span{color:#fff}.score.r b,.score.o b,.score.g b{border-bottom-color:#ffffff66;text-shadow:0 1px 2px #0004}.score.r span,.score.o span,.score.g span{text-shadow:0 1px 2px #0005}
+.hp-phase{background:linear-gradient(135deg,#17130d,#050505);color:#f2d58c;border:1px solid #c89a3d;box-shadow:0 8px 20px #0002}
+.price{color:#8f6018}.timer{border-color:#cfaa56;background:#fff2cf;color:#5e3b08}
+.commit-btn,.ai-btn{background:linear-gradient(135deg,#17130d,#050505);color:#f1d184;border:1px solid #d1a64e;box-shadow:0 9px 24px #0003}
+.commit-btn:hover,.ai-btn:hover{background:linear-gradient(135deg,#f2d787,#b47a20);color:#070707}
+.hp-paybox{border-color:#cfaa56;background:linear-gradient(145deg,#fffdf7,#f3e6c9)}
+input,textarea{border-color:#cdb77e!important;background:#fffefb!important;color:#17130d!important}
+@media(max-width:760px){header{grid-template-columns:1fr;padding:7px 12px 10px;gap:5px}.header-spacer{display:none}.brand{grid-column:1;grid-row:1;justify-self:center}.brand-logo{width:132px;max-width:132px;height:auto;max-height:none}.langs{grid-column:1;grid-row:2;justify-self:center}.app-intro{padding:17px 16px;text-align:left}.card{border-radius:22px}.scoregrid{grid-template-columns:1fr}.score{min-height:116px}.answers.scale{grid-template-columns:repeat(4,1fr)}.answers.scale5{grid-template-columns:repeat(5,1fr);gap:5px}.scale5 .scale-choice{min-width:0;padding:8px 2px}.scale-legend{font-size:9px;gap:3px}}
+</style>
+</head><body>
+<header><div class="header-spacer" aria-hidden="true"></div><div class="brand"><img class="brand-logo" src="Human_Wealth_Logo_Complet_Premium.png" alt="Human Wealth — A Brighter Future"></div><div class="langs"><button class="lang" data-l="fr">FR</button><button class="lang" data-l="en">EN</button><button class="lang" data-l="es">ES</button></div></header>
+<main><section id="app-intro" class="app-intro" aria-label="Présentation de Human Wealth"></section><section class="card"><div id="quiz"></div><div id="results" style="display:none"></div></section></main>
+<script>
+const T={
+fr:{assessment:"BILAN HUMAN WEALTH",subtitle:"50 questions pour un bilan approfondi",part1:"🌟 Partie 1 — Où en êtes-vous aujourd'hui ?",part1i:"Choisissez une note de 1 à 10 pour indiquer où vous en êtes aujourd’hui.",part2:"🧠 Partie 2 — Vos croyances",part2i:"Notez chaque croyance de 1 à 10",yes:"Oui",no:"Non",question:"Question",prev:"Précédent",next:"Suivant",result:"VOTRE BILAN EXPRESS",expressTitle:"1 · LECTURE EXPRESS",profileTitle:"2 · PROFIL DE FONCTIONNEMENT — POTENTIELS À DÉVELOPPER",nextTitle:"3 · RECOMMANDATIONS",axes:"Vos 3 priorités de progression",dims:["Niveau d’énergie","Vision & Leadership","Gestion des priorités","Réseaux","Ressources financières","Croyances limitantes"],workspaceTitle:"Choisissez votre espace de travail",workspaceHelp:"Chaque espace comprend deux parcours : <b>Apprendre</b> pour maîtriser les bonnes connaissances et <b>Agir</b> pour atteindre vos objectifs.",spaces:["💰 Boostez vos finances","🌿 Régénérez-vous naturellement","🎯 Atteignez tous vos objectifs"],spaceDesc:["Améliorez votre visibilité financière, protégez vos ressources et développez votre capacité à créer davantage de valeur.","Retrouvez plus d'énergie, améliorez votre récupération et installez des pratiques naturelles simples.","Clarifiez ce que vous voulez, vérifiez que vos objectifs sont réalisables et transformez-les en prochaines actions concrètes."],learn:"📚 Apprendre",act:"⚡ Agir",lessons:"Leçons",books:"Livres",learnHelp:"Choisissez une leçon ou un livre pour approfondir les connaissances de cet espace.",actTitle:"Agir",actHelp:"Human Wealth propose une action et vérifie sa cohérence.",suggest:"Action proposée",validate:"Valider cette action",yourAction:"Votre propre action",placeholder:"Décrivez précisément l'action que vous envisagez…",check:"Vérifier la compatibilité",compatible:"✅ Action compatible avec cet espace et vos objectifs.",review:"⚠️ À préciser : reliez davantage l'action à votre objectif, au résultat attendu et à un délai.",packages:"PACKAGES HUMAN WEALTH",restart:"Refaire le bilan"},
+en:{assessment:"HUMAN WEALTH ASSESSMENT",subtitle:"50 questions for an in-depth assessment",part1:"🌟 Part 1 — Where are you today?",part1i:"Rate each question from 1 to 10",part2:"🧠 Part 2 — Your beliefs",part2i:"Rate each belief from 1 to 10",yes:"Yes",no:"No",question:"Question",prev:"Previous",next:"Next",result:"YOUR EXPRESS ASSESSMENT",expressTitle:"1 · EXPRESS READING",profileTitle:"2 · FUNCTIONING PROFILE — POTENTIAL TO DEVELOP",nextTitle:"3 · RECOMMENDATIONS",axes:"Your 3 development priorities",dims:["Energy level","Vision & Leadership","Priority management","Networks","Financial resources","Limiting beliefs"],workspaceTitle:"Choose your workspace",workspaceHelp:"Each workspace has two paths: <b>Learn</b> to build the right knowledge and <b>Act</b> to achieve your goals.",spaces:["💰 Boost your finances","🌿 Regenerate naturally","🎯 Achieve all your goals"],spaceDesc:["Improve financial visibility, protect your resources and increase your ability to create value.","Restore your energy, improve recovery and build simple natural practices.","Clarify what you want, check that your goals are realistic and turn them into concrete next actions."],learn:"📚 Learn",act:"⚡ Act",lessons:"Lessons",books:"Books",learnHelp:"Choose a lesson or book to deepen the knowledge in this workspace.",actTitle:"Act — always with validation",actHelp:"Human Wealth suggests an action and checks its coherence. <b>No action is ever executed automatically.</b>",suggest:"Suggested action",validate:"Validate this action",yourAction:"Your own action",placeholder:"Describe precisely the action you are considering…",check:"Check compatibility",compatible:"✅ Action compatible with this workspace and your goals.",review:"⚠️ Needs clarification: connect the action more clearly to your goal, expected outcome and a deadline.",packages:"HUMAN WEALTH PACKAGES",restart:"Retake assessment"},
+es:{assessment:"EVALUACIÓN HUMAN WEALTH",subtitle:"50 preguntas para una evaluación profunda",part1:"🌟 Parte 1 — ¿Dónde estás hoy?",part1i:"Puntúa cada pregunta del 1 al 10",part2:"🧠 Parte 2 — Tus creencias",part2i:"Puntúa cada creencia del 1 al 10",yes:"Sí",no:"No",question:"Pregunta",prev:"Anterior",next:"Siguiente",result:"TU EVALUACIÓN EXPRÉS",expressTitle:"1 · LECTURA EXPRÉS",profileTitle:"2 · PERFIL DE FUNCIONAMIENTO — POTENCIAL A DESARROLLAR",nextTitle:"3 · RECOMENDACIONES",axes:"Tus 3 prioridades de progreso",dims:["Nivel de energía","Visión y Liderazgo","Gestión de prioridades","Redes","Recursos financieros","Creencias limitantes"],workspaceTitle:"Elige tu espacio de trabajo",workspaceHelp:"Cada espacio tiene dos recorridos: <b>Aprender</b> para adquirir los conocimientos adecuados y <b>Actuar</b> para alcanzar tus objetivos.",spaces:["💰 Impulsa tus finanzas","🌿 Regénérate naturalmente","🎯 Alcanza todos tus objetivos"],spaceDesc:["Mejora tu visibilidad financiera, protege tus recursos y aumenta tu capacidad de crear valor.","Recupera tu energía, mejora la recuperación e incorpora prácticas naturales sencillas.","Aclara lo que quieres, comprueba que tus objetivos sean realistas y conviértelos en próximas acciones concretas."],learn:"📚 Aprender",act:"⚡ Actuar",lessons:"Lecciones",books:"Libros",learnHelp:"Elige una lección o un libro para profundizar los conocimientos de este espacio.",actTitle:"Actuar — siempre con validación",actHelp:"Human Wealth propone una acción y comprueba su coherencia. <b>Ninguna acción se ejecuta automáticamente.</b>",suggest:"Acción propuesta",validate:"Validar esta acción",yourAction:"Tu propia acción",placeholder:"Describe con precisión la acción que estás considerando…",check:"Comprobar compatibilidad",compatible:"✅ Acción compatible con este espacio y tus objetivos.",review:"⚠️ Hay que precisarla: relaciona mejor la acción con tu objetivo, el resultado esperado y un plazo.",packages:"PACKAGES HUMAN WEALTH",restart:"Repetir evaluación"}}
+;
+T.fr.profileTitle="2 · POTENTIELS À DÉVELOPPER";
+T.en.profileTitle="2 · POTENTIAL TO DEVELOP";
+T.es.profileTitle="2 · POTENCIAL A DESARROLLAR";
+const Q={
+fr:[["Niveau d’énergie", "Manquez-vous souvent d’énergie ?", "scale"], ["Niveau d’énergie", "Récupérez-vous vite après une période intense ?", "scale"], ["Niveau d’énergie", "Faites-vous régulièrement de l’exercice physique ?", "scale"], ["Niveau d’énergie", "Prenez-vous soin de votre alimentation et de votre hydratation ?", "scale"], ["Niveau d’énergie", "Gérez-vous bien votre stress dans les périodes difficiles ?", "scale"], ["Vision & Leadership", "Savez-vous clairement ce que vous voulez dans la vie ?", "scale"], ["Vision & Leadership", "Prenez-vous rapidement vos décisions importantes ?", "scale"], ["Vision & Leadership", "Vous laissez-vous facilement influencer ?", "scale"], ["Vision & Leadership", "Changez-vous souvent d’avis après une décision ?", "scale"], ["Vision & Leadership", "Réfléchissez-vous longtemps avant d’agir ?", "scale"], ["Vision & Leadership", "Arrivez-vous à mobiliser les autres autour de vos projets ?", "scale"], ["Gestion des priorités", "Connaissez-vous clairement vos priorités ?", "scale"], ["Gestion des priorités", "Savez-vous vous concentrer sur l’essentiel ?", "scale"], ["Gestion des priorités", "Consacrez-vous assez de temps à vos priorités ?", "scale"], ["Gestion des priorités", "Terminez-vous généralement ce que vous commencez ?", "scale"], ["Réseaux", "Avez-vous un réseau important ?", "scale"], ["Réseaux", "Entretenez-vous bien vos relations les plus importantes ?", "scale"], ["Réseaux", "Votre réseau vous apporte-t-il de vraies opportunités ?", "scale"], ["Réseaux", "Vos relations avec les autres sont-elles équilibrées ?", "scale"], ["Réseaux", "Demandez-vous facilement de l’aide quand vous en avez besoin ?", "scale"], ["Ressources financières", "Vous sentez-vous financièrement libre ?", "scale"], ["Ressources financières", "Le manque d’argent vous frustre-t-il ?", "scale"], ["Ressources financières", "Maîtrisez-vous la gestion de vos finances ?", "scale"], ["Ressources financières", "Saisissez-vous les opportunités pour améliorer vos finances ?", "scale"], ["Ressources financières", "Savez-vous comment augmenter vos revenus ?", "scale"]],
+en:[["Energy level", "Do you often feel low on energy?", "scale"], ["Energy level", "Do you recover quickly after an intense period?", "scale"], ["Energy level", "Do you exercise or play sports regularly?", "scale"], ["Energy level", "Do you pay attention to your diet and hydration?", "scale"], ["Energy level", "Do you manage stress well during difficult periods?", "scale"], ["Vision & Leadership", "Do you know exactly what you want to achieve in life?", "scale"], ["Vision & Leadership", "Do you make important decisions quickly?", "scale"], ["Vision & Leadership", "Are you often influenced by other people?", "scale"], ["Vision & Leadership", "Do you often change your mind after making decisions?", "scale"], ["Vision & Leadership", "Do you often spend a long time thinking before acting?", "scale"], ["Vision & Leadership", "Can you rally others around your ideas and projects?", "scale"], ["Priority management", "Do you clearly know your priorities in life?", "scale"], ["Priority management", "Can you focus on what is important?", "scale"], ["Priority management", "Do you devote enough time to your priorities?", "scale"], ["Priority management", "Do you generally finish what you decide to do?", "scale"], ["Networks", "Do you know a lot of people?", "scale"], ["Networks", "Do you maintain the most important relationships in your networks?", "scale"], ["Networks", "Does your network open real opportunities for you?", "scale"], ["Networks", "Do you feel your relationships with the people around you are balanced?", "scale"], ["Networks", "Do you easily ask for help or support when you need it?", "scale"], ["Financial resources", "Do you consider yourself rich and free?", "scale"], ["Financial resources", "Do you feel frustrated by a lack of financial means?", "scale"], ["Financial resources", "Do you currently manage your finances well?", "scale"], ["Financial resources", "Do you seize good opportunities to improve your finances?", "scale"], ["Financial resources", "Do you know how to increase your income in the coming years?", "scale"]],
+es:[["Nivel de energía", "¿Sientes a menudo que te falta energía?", "scale"], ["Nivel de energía", "¿Te recuperas rápido después de un período intenso?", "scale"], ["Nivel de energía", "¿Practicas deporte o ejercicio físico con frecuencia?", "scale"], ["Nivel de energía", "¿Cuidas tu alimentación y tu hidratación?", "scale"], ["Nivel de energía", "¿Gestionas bien el estrés durante los períodos difíciles?", "scale"], ["Visión y Liderazgo", "¿Sabes exactamente qué quieres alcanzar en la vida?", "scale"], ["Visión y Liderazgo", "¿Tomas rápidamente tus decisiones importantes?", "scale"], ["Visión y Liderazgo", "¿Las personas te influyen a menudo?", "scale"], ["Visión y Liderazgo", "¿Cambias a menudo de opinión después de tomar decisiones?", "scale"], ["Visión y Liderazgo", "¿Sueles reflexionar mucho antes de actuar?", "scale"], ["Visión y Liderazgo", "¿Consigues movilizar a otras personas alrededor de tus ideas y proyectos?", "scale"], ["Gestión de prioridades", "¿Conoces bien tus prioridades en la vida?", "scale"], ["Gestión de prioridades", "¿Sabes concentrarte en lo importante?", "scale"], ["Gestión de prioridades", "¿Dedicas el tiempo necesario a tus prioridades?", "scale"], ["Gestión de prioridades", "¿Terminas generalmente lo que has decidido hacer?", "scale"], ["Redes", "¿Conoces a mucha gente?", "scale"], ["Redes", "¿Cuidas bien las relaciones más importantes de tus redes?", "scale"], ["Redes", "¿Tu red te abre oportunidades reales?", "scale"], ["Redes", "¿Sientes que tus relaciones con las personas que frecuentas son equilibradas?", "scale"], ["Redes", "¿Pides fácilmente ayuda o apoyo cuando lo necesitas?", "scale"], ["Recursos financieros", "¿Te consideras rico y libre?", "scale"], ["Recursos financieros", "¿Te sientes frustrado por la falta de medios financieros?", "scale"], ["Recursos financieros", "¿Gestionas actualmente bien tus finanzas?", "scale"], ["Recursos financieros", "¿Aprovechas buenas oportunidades para mejorar tus finanzas?", "scale"], ["Recursos financieros", "¿Sabes cómo aumentar tus ingresos en los próximos años?", "scale"]]};
+const BELIEFS={fr:["Je crois que mes résultats déterminent ma valeur personnelle.", "Je crois que l’action développe ma confiance en moi.", "Je crois que mes doutes m’empêchent de progresser.", "Je crois que la réussite vient surtout d’actions répétées dans la bonne direction.", "Je crois que changer ma façon de travailler améliore peu mes résultats.", "Je crois que je peux créer mes propres opportunités.", "Je crois que mes échecs remettent en cause ma valeur personnelle.", "Je crois que mes échecs peuvent améliorer ma stratégie.", "Je crois que je dois être prêt avant de commencer.", "Je crois que je peux avancer sans connaître toute la solution.", "Je crois qu’une tâche difficile reste difficile à commencer.", "Je crois que je suis responsable des actions nécessaires pour atteindre mes objectifs.", "Je crois que je ne peux pas tenir mes engagements sans motivation.", "Je crois que je peux apprendre à mieux gérer mon temps.", "Je crois que mes intentions comptent plus que mes actions répétées.", "Je crois que je peux mieux réagir aux situations difficiles.", "Je crois que je dois être totalement prêt avant de changer.", "Je crois que je peux influencer une grande partie de ma situation.", "Je crois que ce que je ne contrôle pas influence fortement ma vie.", "Je crois que développer mes compétences peut améliorer ma situation financière.", "Je crois que mes compétences ont peu de valeur.", "Je crois que demander de l’aide peut accélérer ma progression.", "Je crois qu’il est difficile de trouver des personnes qui soutiennent mes objectifs.", "Je crois qu’un objectif clair augmente mes chances de réussir.", "Je crois que je peux transformer une grande ambition en étapes réalisables."],en:["I believe my personal worth does not depend on my results.", "I believe I can build my self-confidence through action.", "I believe I can progress even when I doubt myself.", "I believe success is mainly the result of repeated actions in the right direction.", "I believe I can significantly improve my results by changing how I work.", "I believe I can create my own opportunities.", "I believe I can analyze failure without judging myself personally.", "I believe I can use my failures to improve my strategy.", "I believe starting imperfectly is better than never starting.", "I believe I can move forward even when I do not yet know the whole solution.", "I believe I can reduce a difficult task to one small first action.", "I believe I am responsible for most of the actions needed to achieve my goals.", "I believe I can keep a commitment even when my motivation drops.", "I believe I can learn to manage my time better.", "I believe my results depend more on repeated behaviors than on intentions.", "I believe I can change how I react to difficult situations.", "I believe I can start a change before I feel completely ready.", "I believe I can influence an important part of my current situation.", "I believe I can stop spending energy on what I cannot control.", "I believe I can significantly improve my financial situation by developing useful skills.", "I believe my skills may have more value than I currently think.", "I believe asking for help can accelerate my progress.", "I believe I can seek out people who support my goals.", "I believe a clearly defined goal increases my chances of achieving it.", "I believe I can turn a big ambition into several achievable steps."],es:["Creo que mi valor personal no depende de mis resultados.", "Creo que puedo desarrollar mi confianza en mí mismo mediante la acción.", "Creo que puedo progresar incluso cuando dudo de mí.", "Creo que el éxito es principalmente el resultado de acciones repetidas en la dirección correcta.", "Creo que puedo mejorar considerablemente mis resultados cambiando mi forma de trabajar.", "Creo que puedo crear mis propias oportunidades.", "Creo que puedo analizar un fracaso sin juzgarme personalmente.", "Creo que puedo utilizar mis fracasos para mejorar mi estrategia.", "Creo que empezar de forma imperfecta es mejor que no empezar nunca.", "Creo que puedo avanzar aunque todavía no conozca toda la solución.", "Creo que puedo reducir una tarea difícil a una primera acción pequeña.", "Creo que soy responsable de la mayoría de las acciones necesarias para alcanzar mis objetivos.", "Creo que puedo respetar un compromiso incluso cuando disminuye mi motivación.", "Creo que puedo aprender a gestionar mejor mi tiempo.", "Creo que mis resultados dependen más de mis comportamientos repetidos que de mis intenciones.", "Creo que puedo cambiar mi forma de reaccionar ante situaciones difíciles.", "Creo que puedo iniciar un cambio antes de estar totalmente preparado.", "Creo que puedo influir en una parte importante de mi situación actual.", "Creo que puedo dejar de dedicar energía a lo que no controlo.", "Creo que puedo mejorar significativamente mi situación financiera desarrollando habilidades útiles.", "Creo que mis habilidades pueden tener más valor del que pienso actualmente.", "Creo que pedir ayuda puede acelerar mi progreso.", "Creo que puedo buscar personas que apoyen mis objetivos.", "Creo que un objetivo claramente definido aumenta mis posibilidades de alcanzarlo.", "Creo que puedo transformar una gran ambición en varias etapas realizables."]};
+const LESSONS={finance:["Comprendre sa réalité financière","Construire un budget qui donne de la liberté","Maîtriser son flux de trésorerie","Créer son fonds de sécurité","Augmenter ses revenus avec intelligence","Constater ses résultats"],regen:["Comprendre son niveau d’énergie","Identifier ce qui recharge et ce qui épuise","Réguler le stress en quelques minutes","Créer une routine de récupération","Améliorer son sommeil naturellement","Bouger pour retrouver de l’énergie"],goals:["Clarifier ce que vous voulez vraiment","Transformer une envie en objectif","Vérifier qu’un objectif est réalisable","Passer de l’objectif aux prochaines actions","Prioriser ce qui compte","Gérer la procrastination"]};
+const BOOKS={finance:["The Psychology of Money — Morgan Housel","I Will Teach You to Be Rich — Ramit Sethi","Your Money or Your Life — Vicki Robin"],regen:["Why We Sleep — Matthew Walker","Breath — James Nestor","The Comfort Crisis — Michael Easter"],goals:["Atomic Habits — James Clear","Essentialism — Greg McKeown","The ONE Thing — Gary Keller"]};
+let lang=localStorage.getItem('hp-lang-v172')||'fr',idx=0,answers=Array(50).fill(null);
+window.lang=lang;
+const HW_INTRO={
+fr:["Human Wealth révèle et développe votre potentiel personnel.","Un bilan intelligent de 50 questions analyse votre fonctionnement, vos croyances et vos priorités.","L’application génère une lecture personnalisée et identifie vos principaux axes de progression.","Vous avancez dans trois espaces : objectifs, ressources financières et régénération naturelle.","Human Wealth transforme vos ambitions en apprentissages et en actions concrètes à fort impact."],
+en:["Human Wealth reveals and develops your personal potential.","A smart 50-question assessment analyses how you function, your beliefs and your priorities.","The application creates a personalised reading and identifies your main development areas.","You progress through three spaces: goals, financial resources and natural regeneration.","Human Wealth transforms your ambitions into learning and concrete, high-impact actions."],
+es:["Human Wealth revela y desarrolla tu potencial personal.","Una evaluación inteligente de 50 preguntas analiza tu funcionamiento, tus creencias y tus prioridades.","La aplicación genera una lectura personalizada e identifica tus principales áreas de progreso.","Avanzas en tres espacios: objetivos, recursos financieros y regeneración natural.","Human Wealth transforma tus ambiciones en aprendizajes y acciones concretas de gran impacto."]};
+function renderIntro(){const box=document.getElementById('app-intro');if(box)box.innerHTML=(HW_INTRO[lang]||HW_INTRO.fr).map(x=>`<p>${x}</p>`).join('')}
+function beliefQuestion(text){if(lang==='en')return `Do you agree with the following statement: “${text}”?`;if(lang==='es')return `¿Está de acuerdo con la siguiente afirmación: «${text}»?`;return `Êtes-vous d’accord avec l’affirmation suivante : « ${text} » ?`}
+function allQ(){return [...Q[lang].map(x=>[x[0],x[1],'yesno']),...BELIEFS[lang].map(x=>[T[lang].dims[5],beliefQuestion(x),'yesno'])]}
+function renderQuiz(){const q=allQ(),x=q[idx],instruction=lang==='fr'?'Répondez simplement par Oui ou Non.':lang==='es'?'Responda simplemente Sí o No.':'Simply answer Yes or No.';document.documentElement.lang=lang;document.querySelectorAll('.lang').forEach(b=>b.classList.toggle('active',b.dataset.l===lang));quiz.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 1 · 50 questions Oui / Non':lang==='es'?'Fase 1 · 50 preguntas Sí / No':'Phase 1 · 50 Yes / No questions'}</div><div class="eyebrow">${T[lang].assessment}</div><h1>${T[lang].subtitle}</h1><p class="muted">${idx<25?T[lang].part1:T[lang].part2}<br>${instruction}</p><div class="bar"><i style="width:${(idx+1)/50*100}%"></i></div><p class="eyebrow" style="margin-top:20px">${T[lang].question} ${idx+1}/50 · ${x[0]}</p><h2>${x[1]}</h2><div class="answers yesno"><button class="btn yes-btn ${answers[idx]===10?'active':''}" onclick="setAnswer(10)">${T[lang].yes}</button><button class="btn no-btn ${answers[idx]===0?'active':''}" onclick="setAnswer(0)">${T[lang].no}</button></div>`}
+function setAnswer(v){answers[idx]=v;if(idx<49){idx++;renderQuiz()}else showResults()}
+function scoreClass(v){return v<40?'r':v<70?'o':'g'}
+
+function hpFmt(sec){
+  sec=Math.max(0,Math.floor(sec));
+  const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60);
+  return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');
+}
+function hpStartTimers(){
+  document.querySelectorAll('.timer[data-seconds]').forEach(el=>{
+    if(el.dataset.started==='1') return;
+    el.dataset.started='1';
+    let remaining=parseInt(el.dataset.seconds,10)||0;
+    const out=el.querySelector('.time');
+    if(out) out.textContent=hpFmt(remaining);
+    const id=setInterval(()=>{
+      if(remaining>0) remaining--;
+      if(out) out.textContent=hpFmt(remaining);
+      if(remaining<=0) clearInterval(id);
+    },1000);
+  });
+}
+function hpLevel(v){return v<45?'low':(v<70?'mid':'high')}
+
+
+function hpReading(s,d){
+ const energy=s[d[0]], vision=s[d[1]], priority=s[d[2]], network=s[d[3]], finance=s[d[4]], belief=s[d[5]];
+ const gap=(v)=>belief-v;
+ if(lang==='en'){
+  return `
+  <div class="hp-analysis-space">
+   <h4>💰 Boost your finances</h4>
+   <p>${finance<60
+    ? `Your financial opportunity is to move from constraint to greater control. <b>Clarify your resources, strengthen the value you create and make more deliberate financial decisions.</b> Your network can also become an economic lever if you activate the right relationships, ask for support earlier and pursue opportunities more selectively. ${gap(finance)>=15 ? `Your beliefs suggest that your economic potential is stronger than your current financial behaviour shows. The priority is therefore to convert possibility into repeated decisions and concrete value creation.` : `Progress will come from strengthening both your financial confidence and the behaviours that turn resources into greater freedom.`}`
+    : `Your financial base gives you room to aim higher. <b>The main opportunity is no longer simply to manage money, but to use your resources more strategically.</b> Develop value creation, negotiation, income opportunities and selective relationships that can expand your options. ${network<60 ? `Your network appears to be an underused lever for this progression.` : `Your relational base can accelerate this progression if it is connected to clear intentions and mutual value.`}`}</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🌿 Regenerate naturally</h4>
+   <p>${energy<60
+    ? `Your energy deserves to become a development priority because it influences almost everything else. <b>Better recovery, movement, nutrition and stress regulation can improve the quality of your decisions and your ability to stay consistent.</b> The opportunity is not to force yourself to do more, but to build a more sustainable rhythm. ${gap(energy)>=15 ? `Your beliefs indicate that you may have more capacity than your current habits allow you to express.` : `Small repeated improvements can progressively strengthen resilience and availability.`}`
+    : `Your energy is a useful foundation. <b>The opportunity is to protect it and make it more stable when pressure increases.</b> Better recovery and stress regulation can turn this base into greater resilience, clearer decisions and more consistent execution. Avoid using available energy only to increase workload; use it to improve the quality and sustainability of your functioning.`}</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🎯 Achieve all your goals</h4>
+   <p>${vision<60 || priority<60
+    ? `Your main opportunity around goals is to reduce the distance between intention and execution. <b>Clarify what matters, decide more firmly and protect time for the actions that move your priorities forward.</b> Leadership grows when direction becomes visible, decisions are maintained and commitments are completed. ${gap(Math.min(vision,priority))>=15 ? `Your beliefs suggest that the potential is already present; it now needs to become observable behaviour.` : `Build confidence and execution together through small commitments completed consistently.`}`
+    : `Vision and execution form a relatively strong base. <b>Your next opportunity is to turn personal clarity into greater leadership, consistency and influence.</b> Make priorities more selective, finish what matters and communicate your direction in a way that mobilizes others. Use your strongest capacities to support weaker dimensions rather than trying to improve everything at once.`}</p>
+  </div>`;
+ }
+ if(lang==='es'){
+  return `
+  <div class="hp-analysis-space">
+   <h4>💰 Impulsa tus finanzas</h4>
+   <p>${finance<60
+    ? `Tu oportunidad financiera consiste en pasar de la limitación a un mayor control. <b>Aclara tus recursos, refuerza el valor que creas y toma decisiones financieras más deliberadas.</b> Tu red también puede convertirse en una palanca económica si activas las relaciones adecuadas y buscas oportunidades de forma más selectiva. ${gap(finance)>=15 ? `Tus creencias muestran un potencial económico superior al que expresan tus comportamientos actuales. Convierte esa posibilidad en decisiones repetidas y creación concreta de valor.` : `El progreso requiere reforzar a la vez la confianza financiera y los comportamientos que generan mayor libertad.`}`
+    : `Tu base financiera te permite aspirar a más. <b>La oportunidad principal ya no es sólo gestionar el dinero, sino utilizar tus recursos de forma más estratégica.</b> Desarrolla creación de valor, negociación, oportunidades de ingresos y relaciones capaces de ampliar tus opciones.`}</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🌿 Regénérate naturalmente</h4>
+   <p>${energy<60
+    ? `Tu energía merece convertirse en una prioridad de desarrollo porque influye en casi todo lo demás. <b>Mejor recuperación, movimiento, alimentación y regulación del estrés pueden mejorar tus decisiones y tu constancia.</b> La oportunidad no es exigirte más, sino construir un ritmo sostenible. ${gap(energy)>=15 ? `Tus creencias indican que puedes tener más capacidad de la que expresan tus hábitos actuales.` : `Pequeñas mejoras repetidas pueden reforzar progresivamente tu resiliencia.`}`
+    : `Tu energía constituye una base útil. <b>La oportunidad es protegerla y hacerla más estable cuando aumenta la presión.</b> Una mejor recuperación y regulación del estrés puede transformar esta base en mayor resiliencia, claridad y constancia.`}</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🎯 Alcanza todos tus objetivos</h4>
+   <p>${vision<60 || priority<60
+    ? `Tu principal oportunidad en los objetivos es reducir la distancia entre intención y ejecución. <b>Aclara lo importante, decide con más firmeza y protege tiempo para las acciones prioritarias.</b> El liderazgo crece cuando la dirección se vuelve visible y los compromisos se terminan. ${gap(Math.min(vision,priority))>=15 ? `Tus creencias muestran que el potencial ya existe; ahora debe convertirse en comportamiento observable.` : `Desarrolla confianza y ejecución mediante compromisos pequeños terminados con constancia.`}`
+    : `Visión y ejecución forman una base relativamente fuerte. <b>Tu siguiente oportunidad es transformar claridad personal en más liderazgo, constancia e influencia.</b> Selecciona mejor las prioridades, termina lo importante y comunica tu dirección de manera que movilice a los demás.`}</p>
+  </div>`;
+ }
+ return `
+ <div class="hp-analysis-space">
+  <h4>💰 Boostez vos finances</h4>
+  <p>${finance<60
+   ? `Votre opportunité financière consiste à passer d’une logique de contrainte à davantage de maîtrise. <b>Clarifiez vos ressources, renforcez la valeur que vous créez et prenez des décisions financières plus volontaires.</b> Votre réseau peut également devenir un levier économique si vous activez les bonnes relations, demandez du soutien plus tôt et sélectionnez mieux les opportunités. ${gap(finance)>=15 ? `Vos croyances montrent que votre potentiel économique est supérieur à ce que vos comportements financiers expriment aujourd’hui. L’enjeu est donc de transformer ce possible en décisions répétées et en création concrète de valeur.` : `La progression viendra d’un renforcement simultané de votre confiance financière et des comportements capables de transformer vos ressources en davantage de liberté.`}`
+   : `Votre base financière vous donne la possibilité de viser plus loin. <b>L’opportunité principale n’est plus seulement de gérer vos ressources, mais de les utiliser de manière plus stratégique.</b> Développez la création de valeur, la négociation, les opportunités de revenus et les relations susceptibles d’élargir vos options. ${network<60 ? `Votre réseau apparaît comme un levier encore sous-exploité pour accélérer cette progression.` : `Votre base relationnelle peut accélérer cette progression si elle est reliée à des intentions claires et à une valeur mutuelle.`}`}</p>
+ </div>
+ <div class="hp-analysis-space">
+  <h4>🌿 Régénérez-vous naturellement</h4>
+  <p>${energy<60
+   ? `Votre énergie mérite de devenir une opportunité de développement prioritaire car elle influence presque tout le reste. <b>Une meilleure récupération, davantage de mouvement, une alimentation adaptée et une meilleure régulation du stress peuvent améliorer vos décisions et votre constance.</b> L’opportunité n’est pas de vous forcer à faire davantage, mais de construire un rythme plus durable. ${gap(energy)>=15 ? `Vos croyances indiquent que vous disposez probablement de plus de capacité que vos habitudes actuelles ne vous permettent d’exprimer.` : `De petites améliorations répétées peuvent progressivement renforcer votre résilience et votre disponibilité.`}`
+   : `Votre énergie constitue une base exploitable. <b>L’opportunité est maintenant de la protéger et de la rendre plus stable lorsque la pression augmente.</b> Une meilleure récupération et une meilleure régulation du stress peuvent transformer cette base en davantage de résilience, de clarté et de constance. Évitez d’utiliser l’énergie disponible uniquement pour augmenter la charge ; utilisez-la pour améliorer la qualité et la durabilité de votre fonctionnement.`}</p>
+ </div>
+ <div class="hp-analysis-space">
+  <h4>🎯 Atteignez tous vos objectifs</h4>
+  <p>${vision<60 || priority<60
+   ? `Votre principale opportunité autour des objectifs consiste à réduire la distance entre intention et exécution. <b>Clarifiez ce qui compte, décidez plus fermement et protégez du temps pour les actions qui font réellement avancer vos priorités.</b> Le leadership progresse lorsque la direction devient visible, que les décisions sont maintenues et que les engagements sont terminés. ${gap(Math.min(vision,priority))>=15 ? `Vos croyances indiquent que le potentiel existe déjà ; il doit maintenant devenir un comportement observable.` : `Développez confiance et exécution ensemble grâce à de petits engagements menés jusqu’au bout avec constance.`}`
+   : `Vision et exécution forment une base relativement solide. <b>Votre prochaine opportunité consiste à transformer votre clarté personnelle en davantage de leadership, de constance et d’influence.</b> Rendez vos priorités plus sélectives, terminez ce qui compte et communiquez votre direction de manière à mobiliser les autres. Utilisez vos capacités les plus fortes pour soutenir les dimensions plus faibles plutôt que d’essayer de tout améliorer simultanément.`}</p>
+ </div>`;
+}
+
+function hpProfile(s,d){
+ const energy=s[d[0]], vision=s[d[1]], priority=s[d[2]], network=s[d[3]], finance=s[d[4]], belief=s[d[5]];
+ const gap=(v)=>belief-v;
+ if(lang==='en'){
+  return `
+  <div class="hp-analysis-space">
+   <h4>💰 Financial potential</h4>
+   <p>Your financial potential is not limited to current resources. It also depends on your ability to create value, recognize opportunities, negotiate and mobilize useful relationships. ${gap(finance)>=15 ? `<b>Your beliefs indicate a latent economic potential that is not yet fully expressed in your behaviour.</b> The key is to convert confidence into financial visibility, repeated decisions and value creation.` : finance<60 ? `<b>This potential can grow by strengthening both financial confidence and practical mastery.</b> Develop clearer resource management while increasing your ability to create and capture value.` : `<b>Your existing base can evolve toward greater freedom and strategic capacity.</b> Use resources to create options rather than simply preserving what already exists.`} ${network<60 ? `A more deliberately activated network could considerably increase access to information, opportunities and support.` : `Your relational base can become a multiplier when connected to clear economic intentions and reciprocal value.`}</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🌿 Energy potential</h4>
+   <p>Your energy potential is the capacity to remain available, clear and resilient over time. ${gap(energy)>=15 ? `<b>Your internal beliefs appear stronger than the energy your current habits allow you to express.</b> This suggests recoverable potential rather than a fixed limitation.` : energy<60 ? `<b>Your largest potential gain may come from rebuilding sustainable energy rather than demanding more willpower.</b>` : `<b>Your current energy can become a genuine performance and leadership asset if it remains stable under pressure.</b>`} Develop recovery, movement, nutrition and stress regulation as a coherent system. Better energy can improve patience, decision quality, emotional stability and execution. The goal is not permanent intensity but the ability to mobilize energy when it matters and recover effectively afterwards.</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🎯 Vision, leadership and execution potential</h4>
+   <p>Your most strategic potential lies in the interaction between direction, decisions and execution. ${gap(Math.min(vision,priority))>=15 ? `<b>Your beliefs suggest that you can operate at a higher level than your current habits consistently demonstrate.</b> The latent potential is therefore less about motivation and more about conversion into action.` : vision<60 || priority<60 ? `<b>This potential will develop by clarifying direction and creating evidence through completed commitments.</b>` : `<b>You already have a useful base for turning clarity into influence and results.</b>`} Leadership becomes stronger when you know what matters, make decisions without unnecessary reversals, communicate direction clearly and finish important actions. Use your strongest capacities to compensate for weaker ones. Develop selective priorities, protected execution time and visible commitments. Your potential is expressed when ambition becomes direction, direction becomes action and repeated action creates results others can recognize and follow.</p>
+  </div>`;
+ }
+ if(lang==='es'){
+  return `
+  <div class="hp-analysis-space">
+   <h4>💰 Potencial financiero</h4>
+   <p>Tu potencial financiero no se limita a tus recursos actuales. También depende de tu capacidad para crear valor, reconocer oportunidades, negociar y movilizar relaciones útiles. ${gap(finance)>=15 ? `<b>Tus creencias indican un potencial económico latente que todavía no se expresa plenamente en tus comportamientos.</b> Convierte confianza en visibilidad financiera, decisiones repetidas y creación de valor.` : finance<60 ? `<b>Este potencial puede crecer reforzando a la vez la confianza financiera y el dominio práctico.</b>` : `<b>Tu base actual puede evolucionar hacia mayor libertad y capacidad estratégica.</b>`} Una red activada de forma más deliberada puede multiplicar información, oportunidades y apoyo.</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🌿 Potencial de energía</h4>
+   <p>Tu potencial de energía es la capacidad de mantener disponibilidad, claridad y resiliencia con el tiempo. ${gap(energy)>=15 ? `<b>Tus creencias parecen más fuertes que la energía que tus hábitos actuales permiten expresar.</b> Esto indica un potencial recuperable y no una limitación fija.` : energy<60 ? `<b>Tu mayor ganancia puede venir de reconstruir energía sostenible en lugar de exigir más fuerza de voluntad.</b>` : `<b>Tu energía actual puede convertirse en un verdadero activo de rendimiento y liderazgo si permanece estable bajo presión.</b>`} Desarrolla recuperación, movimiento, alimentación y regulación del estrés como un sistema coherente. La meta no es una intensidad permanente, sino movilizar energía cuando importa y recuperarla eficazmente después.</p>
+  </div>
+  <div class="hp-analysis-space">
+   <h4>🎯 Potencial de visión, liderazgo y ejecución</h4>
+   <p>Tu potencial más estratégico se encuentra en la interacción entre dirección, decisiones y ejecución. ${gap(Math.min(vision,priority))>=15 ? `<b>Tus creencias muestran que puedes funcionar a un nivel superior al que reflejan de forma constante tus hábitos actuales.</b>` : vision<60 || priority<60 ? `<b>Este potencial crecerá al aclarar la dirección y crear pruebas mediante compromisos terminados.</b>` : `<b>Ya dispones de una base útil para transformar claridad en influencia y resultados.</b>`} El liderazgo aumenta cuando sabes qué importa, decides sin cambios innecesarios, comunicas una dirección clara y terminas las acciones importantes. Tu potencial aparece cuando la ambición se convierte en dirección, la dirección en acción y la acción repetida en resultados visibles.</p>
+  </div>`;
+ }
+ return `
+ <div class="hp-analysis-space">
+  <h4>💰 Potentiel financier</h4>
+  <p>Votre potentiel financier ne se limite pas aux ressources dont vous disposez aujourd’hui. Il dépend également de votre capacité à créer de la valeur, reconnaître les opportunités, négocier et mobiliser les relations utiles. ${gap(finance)>=15 ? `<b>Vos croyances indiquent un potentiel économique latent qui ne s’exprime pas encore pleinement dans vos comportements.</b> L’enjeu est de transformer cette confiance en visibilité financière, décisions répétées et création de valeur.` : finance<60 ? `<b>Ce potentiel peut progresser en renforçant simultanément votre confiance financière et votre maîtrise pratique.</b> Développez une gestion plus claire de vos ressources tout en augmentant votre capacité à créer et capter de la valeur.` : `<b>Votre base actuelle peut évoluer vers davantage de liberté et de capacité stratégique.</b> Utilisez vos ressources pour créer des options plutôt que simplement préserver l’existant.`} ${network<60 ? `Un réseau activé plus volontairement pourrait considérablement augmenter votre accès aux informations, aux opportunités et au soutien.` : `Votre base relationnelle peut devenir un multiplicateur lorsqu’elle est reliée à des intentions économiques claires et à une valeur réciproque.`}</p>
+ </div>
+ <div class="hp-analysis-space">
+  <h4>🌿 Potentiel d’énergie</h4>
+  <p>Votre potentiel énergétique correspond à votre capacité à rester disponible, lucide et résilient dans la durée. ${gap(energy)>=15 ? `<b>Vos croyances intérieures paraissent plus fortes que l’énergie que vos habitudes actuelles vous permettent d’exprimer.</b> Cela suggère un potentiel récupérable plutôt qu’une limite définitive.` : energy<60 ? `<b>Votre plus grand potentiel de progression peut venir de la reconstruction d’une énergie durable plutôt que d’un effort supplémentaire de volonté.</b>` : `<b>Votre énergie actuelle peut devenir un véritable actif de performance et de leadership si elle reste stable sous pression.</b>`} Développez récupération, mouvement, alimentation et régulation du stress comme un système cohérent. Une meilleure énergie peut améliorer patience, qualité des décisions, stabilité émotionnelle et exécution. L’objectif n’est pas une intensité permanente, mais la capacité à mobiliser votre énergie quand elle compte puis à récupérer efficacement.</p>
+ </div>
+ <div class="hp-analysis-space">
+  <h4>🎯 Potentiel de vision, leadership et exécution</h4>
+  <p>Votre potentiel le plus stratégique se situe dans l’interaction entre direction, décisions et exécution. ${gap(Math.min(vision,priority))>=15 ? `<b>Vos croyances indiquent que vous pouvez fonctionner à un niveau supérieur à ce que vos habitudes actuelles démontrent régulièrement.</b> Le potentiel latent concerne donc moins la motivation que sa conversion en action.` : vision<60 || priority<60 ? `<b>Ce potentiel se développera en clarifiant la direction et en créant des preuves par des engagements menés jusqu’au bout.</b>` : `<b>Vous disposez déjà d’une base utile pour transformer la clarté en influence et en résultats.</b>`} Le leadership devient plus fort lorsque vous savez ce qui compte, prenez des décisions sans remises en question inutiles, communiquez clairement la direction et terminez les actions importantes. Utilisez vos capacités les plus fortes pour soutenir les dimensions plus faibles. Développez des priorités sélectives, du temps protégé pour l’exécution et des engagements visibles. Votre potentiel s’exprime lorsque l’ambition devient direction, que la direction devient action et que l’action répétée produit des résultats que les autres peuvent reconnaître et suivre.</p>
+ </div>`;
+}
+
+function hpCompactLevel(value,low,mid,high){return value<45?low:value<70?mid:high}
+hpReading=function(s,d){
+ const energy=s[d[0]],vision=s[d[1]],priority=s[d[2]],network=s[d[3]],finance=s[d[4]];
+ const copy=lang==='fr'?{
+  finance:hpCompactLevel(finance,'Clarifiez vos finances. Commencez par une décision concrète.','Structurez vos ressources. Choisissez le levier le plus utile.','Votre base est solide. Utilisez-la pour créer plus de valeur.'),
+  regen:hpCompactLevel(energy,'Votre énergie est fragile. Protégez votre récupération dès maintenant.','Votre énergie progresse. Stabilisez vos habitudes de récupération.','Votre énergie est solide. Préservez-la lorsque la pression augmente.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Clarifiez votre priorité. Engagez immédiatement la prochaine action.','Votre direction se précise. Renforcez la régularité de vos actions.','Votre direction est claire. Transformez-la en résultats visibles.')}:lang==='es'?{
+  finance:hpCompactLevel(finance,'Aclara tus finanzas. Empieza con una decisión concreta.','Estructura tus recursos. Elige la palanca más útil.','Tu base es sólida. Utilízala para crear más valor.'),
+  regen:hpCompactLevel(energy,'Tu energía es frágil. Protege tu recuperación desde ahora.','Tu energía progresa. Estabiliza tus hábitos de recuperación.','Tu energía es sólida. Protégela cuando aumente la presión.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Aclara tu prioridad. Inicia ahora la siguiente acción.','Tu dirección se precisa. Refuerza la regularidad de tus acciones.','Tu dirección es clara. Transfórmala en resultados visibles.')}:{
+  finance:hpCompactLevel(finance,'Clarify your finances. Start with one concrete decision.','Structure your resources. Choose the most useful lever.','Your foundation is strong. Use it to create more value.'),
+  regen:hpCompactLevel(energy,'Your energy is fragile. Protect your recovery now.','Your energy is improving. Stabilize your recovery habits.','Your energy is strong. Protect it when pressure rises.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Clarify your priority. Start the next action now.','Your direction is clearer. Make your actions more consistent.','Your direction is clear. Turn it into visible results.')};
+ const titles=lang==='fr'?['💰 Boostez vos finances','🌿 Régénérez-vous naturellement','🎯 Atteignez tous vos objectifs']:lang==='es'?['💰 Impulsa tus finanzas','🌿 Regénérate naturalmente','🎯 Alcanza todos tus objetivos']:['💰 Boost your finances','🌿 Regenerate naturally','🎯 Achieve all your goals'];
+ return [[titles[0],copy.finance],[titles[1],copy.regen],[titles[2],copy.goals]].map(x=>`<div class="hp-analysis-space"><h4>${x[0]}</h4><p>${x[1]}</p></div>`).join('');
+};
+hpProfile=function(s,d){
+ const energy=s[d[0]],vision=s[d[1]],priority=s[d[2]],network=s[d[3]],finance=s[d[4]];
+ const copy=lang==='fr'?{
+  finance:hpCompactLevel(finance,'Votre potentiel financier grandira avec plus de clarté et de maîtrise.','Votre potentiel financier repose sur des choix plus stratégiques.','Votre potentiel financier peut désormais créer davantage d’options.'),
+  energy:hpCompactLevel(energy,'Votre potentiel énergétique dépend d’une récupération mieux protégée.','Votre potentiel énergétique progressera avec un rythme plus stable.','Votre énergie peut devenir un véritable atout de leadership.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Votre potentiel grandira en reliant clairement vision et exécution.','Votre potentiel progressera avec des priorités plus sélectives.','Votre clarté peut devenir davantage d’influence et de résultats.')}:lang==='es'?{
+  finance:hpCompactLevel(finance,'Tu potencial financiero crecerá con más claridad y control.','Tu potencial financiero depende de decisiones más estratégicas.','Tu potencial financiero puede crear ahora más opciones.'),
+  energy:hpCompactLevel(energy,'Tu potencial energético depende de una recuperación mejor protegida.','Tu potencial energético crecerá con un ritmo más estable.','Tu energía puede convertirse en un verdadero activo de liderazgo.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Tu potencial crecerá al conectar claramente visión y ejecución.','Tu potencial avanzará con prioridades más selectivas.','Tu claridad puede generar más influencia y resultados.')}:{
+  finance:hpCompactLevel(finance,'Your financial potential grows through greater clarity and control.','Your financial potential depends on more strategic choices.','Your financial potential can now create more options.'),
+  energy:hpCompactLevel(energy,'Your energy potential depends on better protected recovery.','Your energy potential grows through a more stable rhythm.','Your energy can become a genuine leadership asset.'),
+  goals:hpCompactLevel(Math.min(vision,priority),'Your potential grows by connecting vision with execution.','Your potential advances through more selective priorities.','Your clarity can create greater influence and results.')};
+ const titles=lang==='fr'?['💰 Potentiel financier','🌿 Potentiel d’énergie','🎯 Potentiel de vision et d’exécution']:lang==='es'?['💰 Potencial financiero','🌿 Potencial de energía','🎯 Potencial de visión y ejecución']:['💰 Financial potential','🌿 Energy potential','🎯 Vision and execution potential'];
+ return [[titles[0],copy.finance],[titles[1],copy.energy],[titles[2],copy.goals]].map(x=>`<div class="hp-analysis-space"><h4>${x[0]}</h4><p>${x[1]}</p></div>`).join('');
+};
+function hpAxisBaseline(label){
+ const L=(label||'').toLowerCase();
+ if(lang==='en'){
+  if(L.includes('vision')) return 'Clarify where you want to go and why.';
+  if(L.includes('prior')) return 'Focus on what matters most right now.';
+  if(L.includes('network')) return 'Activate the right relationships to move faster.';
+  if(L.includes('energy')) return 'Protect your energy to act with consistency.';
+  if(L.includes('financial')) return 'Strengthen your resources with clear decisions.';
+  return 'Turn this priority into one clear action.';
+ }
+ if(lang==='es'){
+  if(L.includes('visión')||L.includes('vision')) return 'Aclara dónde quieres llegar y por qué.';
+  if(L.includes('prior')) return 'Concéntrate en lo que más importa ahora.';
+  if(L.includes('red')) return 'Activa las relaciones adecuadas para avanzar más rápido.';
+  if(L.includes('energ')) return 'Protege tu energía para actuar con constancia.';
+  if(L.includes('financ')) return 'Refuerza tus recursos con decisiones claras.';
+  return 'Convierte esta prioridad en una acción clara.';
+ }
+ if(L.includes('vision')) return 'Clarifiez où vous voulez aller et pourquoi.';
+ if(L.includes('prior')) return 'Concentrez-vous sur ce qui compte vraiment maintenant.';
+ if(L.includes('réseau')||L.includes('reseau')) return 'Activez les bonnes relations pour avancer plus vite.';
+ if(L.includes('énergie')||L.includes('energie')) return 'Protégez votre énergie pour agir avec constance.';
+ if(L.includes('financ')) return 'Renforcez vos ressources avec des décisions claires.';
+ return 'Transformez cette priorité en une action claire.';
+}
+function hpDeepAnalysis(s,d,reverse){
+ const behaviorAvg=Math.round(d.slice(0,5).reduce((a,k)=>a+(s[k]||0),0)/5),beliefScore=s[d[5]]||0,gap=beliefScore-behaviorAvg;
+ const items=[];for(let i=0;i<25;i++){const raw=Number(answers[i]??0),corrected=reverse.has(i)?10-raw:raw;items.push({dimension:Q[lang][i][0],text:Q[lang][i][1],raw,corrected,score:s[Q[lang][i][0]]||0})}
+ const strengths=items.filter(x=>x.corrected===10).sort((a,b)=>b.score-a.score).filter((x,i,a)=>a.findIndex(y=>y.dimension===x.dimension)===i).slice(0,3);
+ const frictions=items.filter(x=>x.corrected===0).sort((a,b)=>a.score-b.score).filter((x,i,a)=>a.findIndex(y=>y.dimension===x.dimension)===i).slice(0,3);
+ const beliefItems=BELIEFS[lang].map((text,j)=>{const raw=Number(answers[j+25]??0),corrected=reverse.has(j+25)?10-raw:raw;return{text,raw,corrected}}),beliefSupports=beliefItems.filter(x=>x.corrected===10).slice(0,2),beliefBlocks=beliefItems.filter(x=>x.corrected===0).slice(0,2);
+ const weakest=Object.entries(s).sort((a,b)=>a[1]-b[1])[0],weakIndex=d.indexOf(weakest[0]);
+ const actions={fr:["Planifiez dès maintenant deux périodes de récupération et une action physique simple pour les sept prochains jours.","Choisissez une décision importante, écrivez le résultat recherché et fixez une première échéance.","Sélectionnez une seule priorité à fort impact et bloquez un créneau précis pour la terminer.","Contactez cette semaine une personne importante avec une proposition d’échange ou d’entraide concrète.","Établissez aujourd’hui un état simple de vos revenus, dépenses, dettes et ressources disponibles.","Choisissez une croyance limitante repérée ici et cherchez une preuve concrète qui permet de la remettre en question."],en:["Schedule two recovery periods and one simple physical action for the next seven days.","Choose one important decision, write down the desired outcome and set a first deadline.","Select one high-impact priority and reserve a precise time slot to complete it.","Contact one important person this week with a concrete proposal for exchange or mutual support.","Create a simple overview today of your income, expenses, debts and available resources.","Choose one limiting belief identified here and find concrete evidence that challenges it."],es:["Planifica dos períodos de recuperación y una acción física sencilla para los próximos siete días.","Elige una decisión importante, escribe el resultado deseado y fija un primer plazo.","Selecciona una única prioridad de gran impacto y reserva un momento preciso para terminarla.","Contacta esta semana con una persona importante mediante una propuesta concreta de intercambio o ayuda mutua.","Haz hoy un estado sencillo de tus ingresos, gastos, deudas y recursos disponibles.","Elige una creencia limitante detectada aquí y busca una prueba concreta que permita cuestionarla."]};
+ const L=lang==='fr'?{title:'4 · ANALYSE APPROFONDIE',lead:'Votre profil révèle la dynamique qui relie vos ressources actuelles, vos habitudes et vos convictions. Cette lecture met en évidence ce qui soutient déjà votre progression, ce qui la ralentit et le levier le plus utile pour créer un changement durable.',strengths:'Ressources déjà mobilisables',frictions:'Points de vigilance',beliefs:'Cohérence entre convictions et comportements',priority:'Levier stratégique à activer',yes:'Oui',no:'Non',aligned:'Vos convictions et vos comportements se renforcent mutuellement : votre enjeu principal est maintenant de stabiliser cette cohérence dans la durée.',ideas:'Votre état d’esprit est plus favorable que vos habitudes actuelles. Votre potentiel est présent ; il doit désormais être traduit en décisions régulières et en preuves concrètes.',actions:'Vos actions sont plus avancées que la confiance que vous vous accordez. Reconnaître vos réussites et consolider votre légitimité vous permettra d’agir avec plus d’ampleur.',support:'Conviction qui vous soutient',block:'Conviction qui limite votre progression'}:lang==='es'?{title:'4 · ANÁLISIS PROFUNDO',lead:'Tu perfil revela la dinámica que conecta tus recursos actuales, tus hábitos y tus convicciones. Esta lectura destaca lo que ya favorece tu progreso, lo que lo frena y la palanca más útil para crear un cambio duradero.',strengths:'Recursos que ya puedes movilizar',frictions:'Puntos de vigilancia',beliefs:'Coherencia entre convicciones y comportamientos',priority:'Palanca estratégica que activar',yes:'Sí',no:'No',aligned:'Tus convicciones y tus comportamientos se refuerzan mutuamente. Tu principal reto ahora es mantener esta coherencia a largo plazo.',ideas:'Tu mentalidad es más favorable que tus hábitos actuales. El potencial está presente; ahora debes convertirlo en decisiones regulares y pruebas concretas.',actions:'Tus acciones están más avanzadas que la confianza que te concedes. Reconocer tus logros y consolidar tu legitimidad te permitirá actuar con mayor amplitud.',support:'Convicción que te apoya',block:'Convicción que limita tu progreso'}:{title:'4 · IN-DEPTH ANALYSIS',lead:'Your profile reveals the dynamic connecting your current resources, habits and beliefs. This reading highlights what already supports your progress, what slows it down and the most useful lever for lasting change.',strengths:'Resources you can already mobilize',frictions:'Points to watch',beliefs:'Alignment between beliefs and behaviour',priority:'Strategic lever to activate',yes:'Yes',no:'No',aligned:'Your beliefs and behaviours reinforce each other. Your main challenge now is to make this alignment consistent over time.',ideas:'Your mindset is more favourable than your current habits. The potential is present; it must now be translated into regular decisions and concrete evidence.',actions:'Your actions are ahead of the confidence you give yourself. Recognizing your achievements and strengthening your legitimacy will help you act on a larger scale.',support:'Belief that supports you',block:'Belief that limits your progress'};
+ const gapText=gap>=15?L.ideas:gap<=-15?L.actions:L.aligned,answerLabel=x=>x.raw===10?L.yes:L.no,list=(arr,fallback)=>arr.length?arr.map(x=>`<li><b>${hpEscape(x.dimension||'')}</b> — ${hpEscape(x.text)} <em>(${answerLabel(x)})</em></li>`).join(''):`<li>${fallback}</li>`;
+ return `<h2>${L.title}</h2><p class="analysis-lead">${L.lead} ${gapText}</p><div class="analysis-grid"><div class="analysis-panel"><h3>${L.strengths}</h3><ul>${list(strengths,L.aligned)}</ul></div><div class="analysis-panel"><h3>${L.frictions}</h3><ul>${list(frictions,L.aligned)}</ul></div><div class="analysis-panel"><h3>${L.beliefs}</h3><ul>${beliefSupports.map(x=>`<li><b>${L.support}</b> — ${hpEscape(x.text)}</li>`).join('')}${beliefBlocks.map(x=>`<li><b>${L.block}</b> — ${hpEscape(x.text)}</li>`).join('')}</ul></div><div class="analysis-panel analysis-priority"><h3>${L.priority}</h3><p><b>${hpEscape(weakest[0])} · ${weakest[1]}/100</b></p><p>${actions[lang]?.[weakIndex]||actions.fr[weakIndex]}</p></div></div>`
+}
+function showResults(){const d=T[lang].dims,s={};const aq=Q[lang];const negativeFunctioning=[0,7,8,9,21],negativeFrenchBeliefs=[25,27,29,31,33,35,37,39,41,43,45,47];const reverse=new Set([...negativeFunctioning,...(lang==='fr'?negativeFrenchBeliefs:[])]);for(let di=0;di<5;di++){const vals=[];for(let i=0;i<25;i++){if(aq[i][0]===d[di]){let v=Number(answers[i]||0);if(reverse.has(i))v=10-v;vals.push(v)}}s[d[di]]=Math.round((vals.reduce((a,b)=>a+b,0)/(vals.length||1))*10)}const beliefVals=answers.slice(25,50).map((raw,j)=>{
+  let v=Number(raw||0);
+  const absoluteIndex=j+25;
+  if(reverse.has(absoluteIndex)) v=10-v;
+  return v;
+});
+s[d[5]]=Math.round((beliefVals.reduce((a,b)=>a+b,0)/(beliefVals.length||1))*10);const ordered=Object.entries(s).sort((a,b)=>a[1]-b[1]);window.hpLastScores=s;quiz.style.display='none';results.style.display='block';results.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 2 · Résultats + offres':lang==='es'?'Fase 2 · Resultados + ofertas':'Phase 2 · Results + offers'}</div><div class="eyebrow">${T[lang].result}</div><h1>Human Wealth</h1><div class="scoregrid">${Object.entries(s).map(([k,v])=>`<div class="score ${scoreClass(v)}"><b>${v}/100</b><span>${k}</span></div>`).join('')}</div><section class="result-block"><h2>${T[lang].expressTitle}</h2><p>${hpReading(s,d)}</p></section><section class="result-block"><h2>${T[lang].profileTitle}</h2>${hpProfile(s,d)}</section><section class="result-block"><h2>${T[lang].nextTitle}</h2><h3>${T[lang].axes}</h3><div class="axes">${ordered.slice(0,3).map((x,i)=>`<div class="axis"><b>${i+1}. ${x[0]}</b><span class="axis-baseline">${hpAxisBaseline(x[0])}</span></div>`).join('')}</div></section><section class="deep-analysis">${hpDeepAnalysis(s,d,reverse)}</section>${packages()}<section id="hp-workspace-gate" class="hp-workspace-gate"><div class="hp-phase">${lang==='fr'?'Phase 4 · Espace de travail':lang==='es'?'Fase 4 · Espacio de trabajo':'Phase 4 · Workspace'}</div><div class="eyebrow">${T[lang].workspaceTitle}</div><p class="muted">${T[lang].workspaceHelp}</p><div class="spaces">${[0,1,2].map(i=>`<article class="space"><h3>${T[lang].spaces[i]}</h3><p class="muted">${T[lang].spaceDesc[i]}</p><div class="modegrid"><button class="mode" onclick="openSpace(${i},'learn')">${T[lang].learn}</button><button class="mode" onclick="openSpace(${i},'act')">${T[lang].act}</button></div></article>`).join('')}</div><div id="workspace" class="workspace"></div></section><button class="btn" style="margin-top:24px" onclick="restart()">${T[lang].restart}</button>`;hpStartTimers();localStorage.setItem('humanpath-v18-result',JSON.stringify({lang,scores:s,answers,date:new Date().toISOString()}))}
+function packages(){
+ const data=lang==='fr'?[
+  {name:'START',duration:'30 jours',tagline:'pour créer un premier déclic',price:'250 €',old:'500 €',seconds:18000,benefit:'Bilan personnalisé · Plan d’action 30 jours · 1 priorité et accès à 1 espace · Outils pratiques · Suivi continu de progression'},
+  {name:'GROW',duration:'3 mois',tagline:'pour accélérer votre progression',price:'3 000 €',old:'5 000 €',seconds:86400,benefit:'Tout START + accompagnement personnalisé avec objectifs suivis · Accès aux 3 espaces · Progression sur 90 jours'},
+  {name:'PREMIUM',duration:'6 mois',tagline:'pour une transformation profonde',price:'10 000 €',old:'15 000 €',seconds:259200,benefit:'Tout GROW + accompagnement premium avec 2 points par semaine · Stratégie personnalisée · Assistance 24/7'}
+ ]:lang==='es'?[
+  {name:'START',duration:'30 días',tagline:'para crear un primer impulso',price:'250 €',old:'500 €',seconds:18000,benefit:'Evaluación personalizada · Plan de acción de 30 días · 1 prioridad y acceso a 1 espacio · Herramientas prácticas · Seguimiento continuo del progreso'},
+  {name:'GROW',duration:'3 meses',tagline:'para acelerar tu progreso',price:'3.000 €',old:'5.000 €',seconds:86400,benefit:'Todo START + acompañamiento personalizado con objetivos seguidos · Acceso a los 3 espacios · Progreso durante 90 días'},
+  {name:'PREMIUM',duration:'6 meses',tagline:'para una transformación profunda',price:'10.000 €',old:'15.000 €',seconds:259200,benefit:'Todo GROW + acompañamiento premium con 2 sesiones por semana · Estrategia personalizada · Asistencia 24/7'}
+ ]:[
+  {name:'START',duration:'30 days',tagline:'to create your first breakthrough',price:'€250',old:'€500',seconds:18000,benefit:'Personalized assessment · 30-day action plan · 1 priority and access to 1 space · Practical tools · Continuous progress tracking'},
+  {name:'GROW',duration:'3 months',tagline:'to accelerate your progress',price:'€3,000',old:'€5,000',seconds:86400,benefit:'Everything in START + personalized support with tracked goals · Access to all 3 spaces · Progress over 90 days'},
+  {name:'PREMIUM',duration:'6 months',tagline:'for a deep transformation',price:'€10,000',old:'€15,000',seconds:259200,benefit:'Everything in GROW + premium support with 2 sessions per week · Personalized strategy · 24/7 assistance'}
+ ];
+ return `<section class="packages"><div class="eyebrow">${T[lang].packages}</div><div class="packagegrid">${data.map(x=>`<article class="package"><h3>${x.name}</h3><div class="offer-duration">${x.duration}</div><div class="offer-tagline">${x.tagline}</div><div class="price">${x.price} <span class="old">${x.old}</span></div><p class="offer-benefit">${x.benefit}</p><div class="timer" data-seconds="${x.seconds}"><span class="glass">⌛</span><span class="time">${hpFmt(x.seconds)}</span></div><button type="button" class="commit-btn" onclick="hpOpenPayment('${x.name}','${x.price}')">${lang==='fr'?'Je m’engage':lang==='es'?'Me comprometo':'I’m in'}</button></article>`).join('')}</div></section>`;
+}
+const HP_BOOKS={"goals": [["Atomic Habits", "James Clear", "Ce livre montre comment de petits changements répétés produisent de grands résultats. Il explique comment construire de bonnes habitudes et éliminer les mauvaises. L’auteur insiste sur l’importance du système plutôt que sur la simple volonté. Vous apprenez à rendre les bonnes actions faciles et les mauvaises plus difficiles. C’est un excellent guide pour progresser de façon durable."], ["Goals!", "Brian Tracy", "Brian Tracy propose une méthode claire pour définir, planifier et atteindre ses objectifs. Le livre insiste sur l’écriture des objectifs pour les rendre plus concrets. Il aide à clarifier le “pourquoi” derrière chaque ambition. Vous y trouverez des outils pour dépasser la procrastination et garder le cap. C’est un classique très pratique pour passer de l’idée à l’exécution."], ["The 7 Habits of Highly Effective People", "Stephen R. Covey", "Ce livre relie les objectifs à des principes de vie solides et à la responsabilité personnelle. Covey explique comment être proactif et prioriser ce qui compte vraiment. Il invite à penser à long terme plutôt qu’à réagir en permanence à l’urgence. On y apprend à aligner ses actions avec ses valeurs. C’est une base très forte pour construire une efficacité durable."], ["The ONE Thing", "Gary Keller et Jay Papasan", "Le livre repose sur une idée simple : se concentrer sur la priorité la plus importante. Il montre que la clarté augmente fortement la productivité. L’approche aide à réduire la dispersion et les tâches secondaires. Vous apprenez à identifier l’action qui rend les autres plus faciles ou inutiles. C’est très utile quand on veut avancer vite sans se perdre."], ["Measure What Matters", "John Doerr", "Ce livre présente la méthode OKR, utilisée pour fixer et suivre des objectifs ambitieux. Il montre comment transformer une vision en résultats mesurables. L’ouvrage insiste sur l’alignement, la transparence et le suivi régulier. Il est particulièrement adapté aux projets d’équipe et aux entreprises. C’est une référence pour piloter l’exécution avec rigueur."], ["Drive", "Daniel Pink", "Daniel Pink explique ce qui motive réellement les êtres humains. Il met en avant trois leviers : autonomie, maîtrise et sens. Le livre montre que les récompenses externes ne suffisent pas toujours. Il aide à créer une motivation plus profonde et plus stable. C’est très utile pour tenir sur la durée dans un projet ambitieux."], ["The 12-Week Year", "Brian P. Moran et Michael Lennington", "Ce livre propose de remplacer les objectifs annuels par des cycles de 12 semaines. L’idée est de créer plus d’urgence et de concentration. Le suivi hebdomadaire devient central pour éviter l’inertie. Vous avancez avec des priorités plus claires et des actions plus courtes. C’est une méthode puissante pour exécuter rapidement."], ["Succeed", "Heidi Grant Halvorson", "Ce livre explore la science de la réussite et les mécanismes psychologiques du succès. Il aide à choisir les bons objectifs et à éviter les erreurs fréquentes. L’auteure montre comment maintenir l’élan malgré les obstacles. On y trouve des conseils concrets pour rester motivé. C’est un bon choix si vous aimez une approche plus scientifique."], ["Your Best Year Ever", "Michael Hyatt", "Ce livre propose une méthode structurée pour fixer des objectifs cohérents avec ses priorités. Il met l’accent sur la clarté, la réflexion et la progression. L’approche aide à dépasser les blocages mentaux et les croyances limitantes. Vous apprenez à transformer une intention en plan d’action. C’est particulièrement utile pour organiser une année très productive."], ["Deep Work", "Cal Newport", "Ce livre montre la valeur du travail profond et sans distraction. Il explique comment produire des résultats de haute qualité en se concentrant réellement. L’auteur défend des périodes de concentration intense et protégée. Cela aide à avancer sur les projets importants plus vite. C’est un livre très fort pour ceux qui veulent obtenir des résultats sérieux."]], "finance": [["Père riche, Père pauvre", "Robert Kiyosaki", "Ce livre compare deux visions de l’argent et de la richesse. Il insiste sur l’importance des actifs plutôt que du simple revenu. Kiyosaki pousse à apprendre la finance personnelle dès que possible. Le livre aide à revoir ses croyances sur le travail et l’indépendance. C’est un classique pour changer son rapport à l’argent."], ["La psychologie de l’argent", "Morgan Housel", "L’ouvrage montre que les décisions financières sont souvent émotionnelles. Il explique pourquoi le comportement compte autant que les connaissances. Vous y apprendrez à éviter les excès de confiance et l’impulsivité. Le livre valorise la patience, la constance et le long terme. C’est une lecture très utile pour mieux gérer ses réactions face à l’argent."], ["L’homme le plus riche de Babylone", "George S. Clason", "Ce livre utilise des paraboles pour enseigner les bases de la richesse. Il met en avant l’épargne régulière et la discipline. Les règles sont simples, faciles à retenir et applicables au quotidien. Il rappelle qu’il faut vivre sous ses moyens pour accumuler du capital. C’est un excellent point de départ pour les débutants."], ["The Simple Path to Wealth", "JL Collins", "Le livre explique comment construire sa richesse de manière simple. Il défend une approche long terme centrée sur l’investissement indexé. L’auteur insiste sur les frais faibles et la régularité. Le style est direct, clair et très accessible. C’est un très bon guide pour investir sans complexité inutile."], ["I Will Teach You to Be Rich", "Ramit Sethi", "Ce livre propose une méthode concrète pour gérer son argent sans se priver. Il couvre l’automatisation de l’épargne, du budget et de l’investissement. L’approche est pratique et orientée action. Ramit Sethi parle aussi de dépenses intelligentes et de priorités personnelles. C’est idéal pour ceux qui veulent des résultats concrets rapidement."], ["L’investisseur intelligent", "Benjamin Graham", "C’est un grand classique de l’investissement de valeur. Le livre apprend à analyser avec prudence et à éviter les décisions émotionnelles. Il insiste sur la marge de sécurité et la discipline. Le contenu est plus technique, mais très formateur. C’est une référence pour bâtir une stratégie d’investissement sérieuse."], ["Your Money or Your Life", "Vicki Robin et Joe Dominguez", "Ce livre relie l’argent au temps de vie et aux choix personnels. Il invite à mesurer ce que coûte réellement chaque dépense. L’objectif est de reprendre le contrôle sur sa relation au travail et à la consommation. Le livre pousse vers une vie plus simple et plus consciente. Il convient très bien à ceux qui veulent plus de liberté financière."], ["Le millionnaire d’à côté", "Thomas J. Stanley et William D. Danko", "L’ouvrage étudie les comportements des personnes réellement riches. Il montre que beaucoup de millionnaires vivent de façon simple et disciplinée. Le livre casse plusieurs idées reçues sur le luxe et l’apparence. Il met l’accent sur l’épargne, l’investissement et la constance. C’est un bon livre pour comprendre la richesse durable."], ["La méthode Total Money Makeover", "Dave Ramsey", "Ce livre propose un plan clair pour sortir des dettes et reprendre le contrôle. Il suit une méthode étape par étape, très structurée. L’auteur met l’accent sur l’urgence, la discipline et les habitudes. C’est particulièrement utile pour les personnes qui veulent repartir à zéro. Le ton est direct et motivant."], ["Un pas vers la liberté financière", "Tony Robbins", "Le livre vulgarise des principes d’investissement et de gestion patrimoniale. Il aide à comprendre les bases sans être trop technique. Robbins met l’accent sur la vision long terme et la maîtrise du risque. Le livre rassemble de nombreuses idées issues d’experts financiers. C’est une bonne lecture pour élargir sa culture financière."]]};
+
+function hpBookList(category){
+  const books=HP_BOOKS[category]||[];
+  return `<div class="book-list">${books.map((b,i)=>{const x=hpLocalizedBook(b);return `<button type="button" class="book-btn" onclick="hpShowBook('${category}',${i})"><b>${i+1}. ${x[0]}</b><span>${x[1]}</span></button>`}).join('')}</div><div id="book-summary" class="book-summary" style="display:none"></div>`;
+}
+function hpShowBook(category,index){
+  const b=hpLocalizedBook((HP_BOOKS[category]||[])[index]);
+  const box=document.getElementById('book-summary');
+  if(!b||!box) return;
+  box.style.display='block';
+  box.innerHTML=`<h4>${b[0]} — ${b[1]}</h4><p>${b[2]}</p>`;
+}
+function hpLocalizedBook(b){
+ if(!b)return b;
+ if(lang==='fr')return b;
+ const titles={
+  en:{'Père riche, Père pauvre':'Rich Dad Poor Dad','La psychologie de l’argent':'The Psychology of Money','L’homme le plus riche de Babylone':'The Richest Man in Babylon','L’investisseur intelligent':'The Intelligent Investor','Le millionnaire d’à côté':'The Millionaire Next Door','La méthode Total Money Makeover':'The Total Money Makeover','Un pas vers la liberté financière':'Money: Master the Game'},
+  es:{'Père riche, Père pauvre':'Padre rico, padre pobre','La psychologie de l’argent':'La psicología del dinero','L’homme le plus riche de Babylone':'El hombre más rico de Babilonia','L’investisseur intelligent':'El inversor inteligente','Le millionnaire d’à côté':'El millonario de la puerta de al lado','La méthode Total Money Makeover':'La transformación total de su dinero','Un pas vers la liberté financière':'Dinero: domina el juego'}
+ };
+ const title=titles[lang]?.[b[0]]||b[0];
+ const text=lang==='es'?`Este libro ofrece ideas prácticas para tomar mejores decisiones, reforzar hábitos útiles y avanzar con más claridad. Identifique una idea clave y conviértala en una acción concreta esta semana.`:`This book offers practical ideas for better decisions, stronger habits and clearer progress. Identify one key insight and turn it into a concrete action this week.`;
+ const author=lang==='es'?b[1].replace(/ et /g,' y '):b[1].replace(/ et /g,' and ');
+ return [title,author,text];
+}
+
+const HP_LESSONS_FULL=[[{title:`Comprendre sa réalité financière`,text:`Faites un état des lieux complet de votre situation : revenus, dépenses, dettes, actifs et ressources disponibles. Cet exercice de transparence vous donne une base solide pour prendre des décisions éclairées.`},{title:`Passer de la peur de l’argent à la clarté`,text:`Identifiez les croyances limitantes et les histoires personnelles qui bloquent votre relation avec l’argent. Transformez vos pensées anxieuses en questions concrètes pour reprendre le contrôle.`},{title:`Être 100% responsable : cause versus effet`,text:`Apprenez à distinguer ce qui dépend de vous, ce qui influence vos résultats et ce qui échappe à votre contrôle. Analysez vos difficultés financières avec le modèle cause, choix, conséquence.`},{title:`Comprendre ses habitudes de dépenses`,text:`Repérez vos dépenses automatiques, émotionnelles, sociales et impulsives. En examinant vos dix dernières dépenses, identifiez leurs véritables déclencheurs pour mieux les maîtriser.`},{title:`Faire des économies sans se frustrer`,text:`Réduisez les dépenses inutiles tout en conservant ce qui apporte réellement de la valeur à votre vie. Choisissez cinq économies simples à mettre en place cette semaine sans vous priver.`},{title:`Construire un budget qui donne de la liberté`,text:`Utilisez le budget comme un outil de choix stratégiques plutôt que comme une restriction. Répartissez vos revenus entre besoins, projets, plaisir, protection et développement personnel.`},{title:`Maîtriser son flux de trésorerie`,text:`Comprenez la différence entre revenus, dépenses fixes, dépenses variables et solde disponible. Calculez votre flux de trésorerie mensuel pour savoir exactement où vous en êtes.`},{title:`Créer son fonds de sécurité`,text:`Une réserve d’argent disponible en cas d’imprévu vous protège des coups du sort. Définissez un premier objectif d’épargne, puis un objectif à moyen terme pour dormir tranquille.`},{title:`Sortir progressivement de ses dettes`,text:`Classez vos dettes et choisissez une stratégie réaliste de remboursement adaptée à votre situation. Établissez un calendrier sur les trois prochains mois pour avancer concrètement.`},{title:`Protéger ses ressources`,text:`Identifiez les risques qui peuvent fragiliser vos finances : imprévus, dépendance à un seul revenu, fraude ou mauvaises décisions. Créez une liste de mesures de protection prioritaires.`},{title:`Qui écoutez-vous et pourquoi ?`,text:`Examinez l’influence de votre entourage, des experts, des réseaux sociaux et des vendeurs sur vos décisions financières. Apprenez à classer les conseils reçus en faits, informations, opinions ou projections.`},{title:`Distinguer les faits, les informations et les opinions`,text:`Développez une écoute critique avant de prendre une décision financière importante. Analysez chaque contenu avec trois questions : Quelle est la preuve ? Qui parle ? Quel est son intérêt ?`},{title:`Développer sa capacité à créer de la valeur`,text:`Comprenez que la valeur peut venir d’une compétence, d’une solution, d’un réseau ou de votre capacité à résoudre un problème. Listez dix manières dont vos compétences peuvent aider quelqu’un.`},{title:`Augmenter ses revenus avec intelligence`,text:`Explorez les leviers disponibles : meilleure offre, nouvelle compétence, négociation, activité complémentaire ou partenariat. Choisissez un levier et définissez votre première expérimentation.`},{title:`Croire que ce que vous voulez est possible`,text:`Remplacez la résignation par une vision financière crédible et progressive. Décrivez votre situation financière idéale dans trois ans, puis identifiez les étapes intermédiaires pour y arriver.`},{title:`Apprendre à négocier`,text:`Défendez votre valeur sans agressivité et recherchez des accords avantageux pour toutes les parties. Préparez une négociation réelle avec une demande claire, une justification solide et une alternative.`},{title:`Comprendre les règles financières`,text:`Identifiez les principes de base : dépenses inférieures aux revenus, épargne régulière, protection, création de valeur et investissement prudent. Formulez vos cinq règles financières personnelles.`},{title:`Constater ses résultats`,text:`Mesurez vos progrès avec des indicateurs concrets au lieu de vous fier uniquement à vos impressions. Créez un tableau mensuel avec quatre indicateurs : épargne, dettes, revenus et dépenses.`}],[{title:`Comprendre son niveau d’énergie`,text:`Distinguez fatigue physique, charge mentale, fatigue émotionnelle et manque de motivation. Notez votre énergie sur 10 à différents moments de la journée pour identifier vos patterns.`},{title:`Identifier ce qui recharge et ce qui épuise`,text:`Repérez les personnes, activités, environnements et habitudes qui influencent positivement ou négativement votre énergie. Créez deux colonnes : me nourrit et me vide.`},{title:`Être bien maintenant`,text:`Apprenez à apprécier le présent sans attendre d’avoir atteint un résultat futur pour être heureux. Pratiquez trois minutes d’attention aux sensations, aux sons et à la respiration.`},{title:`Observer ses ressentis`,text:`Reconnaissez une émotion sans la nier, la dramatiser ou lui obéir automatiquement. Utilisez la méthode : Je ressens, dans mon corps, parce que, j’ai besoin de.`},{title:`Surveiller les émotions négatives`,text:`Comprenez que peur, colère, tristesse ou jalousie peuvent être des signaux utiles, mais pas toujours des vérités absolues. Identifiez une émotion récente et distinguez le fait, l’interprétation et la réaction.`},{title:`Apprivoiser ses peurs`,text:`Différenciez danger réel, risque possible et scénario imaginé par votre esprit. Écrivez la peur, sa probabilité, son impact et une action de prévention concrète.`},{title:`Réguler le stress en quelques minutes`,text:`Utilisez une technique simple de respiration, d’ancrage ou de relâchement corporel pour faire baisser la tension. Faites cinq cycles de respiration lente, puis évaluez votre niveau de stress.`},{title:`Créer une routine de récupération`,text:`Construisez une séquence courte pour passer du mode performance au mode récupération. Concevez un rituel de 15 minutes avec respiration, étirements, silence ou marche.`},{title:`Améliorer son sommeil naturellement`,text:`Observez les habitudes qui favorisent ou perturbent votre récupération nocturne. Choisissez une seule amélioration à tester pendant sept jours pour des nuits plus réparatrices.`},{title:`Bouger pour retrouver de l’énergie`,text:`Comprenez que le mouvement doux peut soutenir votre vitalité et diminuer la tension accumulée. Réalisez une marche attentive ou une mobilisation corporelle de cinq minutes.`},{title:`Se nourrir pour soutenir son énergie`,text:`Reliez alimentation, stabilité d’énergie, concentration et humeur pour optimiser vos repas. Examinez un repas habituel et ajoutez un aliment peu transformé, une source de protéines et une source de fibres.`},{title:`Manger avec conscience`,text:`Distinguez faim physique, faim émotionnelle, habitude et envie avant de manger. Avant un repas, évaluez votre faim, votre émotion et votre besoin réel.`},{title:`Comprendre l’alimentation émotionnelle`,text:`Identifiez les situations dans lesquelles vous mangez pour apaiser une émotion plutôt que par faim. Construisez une liste de cinq alternatives non alimentaires pour vous réconforter.`},{title:`La gratitude et l’appréciation`,text:`Développez la capacité à reconnaître ce qui fonctionne déjà dans votre vie. Notez trois éléments appréciables et expliquez leur valeur concrète pour vous.`},{title:`Apprécier même les expériences difficiles`,text:`Cherchez un enseignement dans les épreuves sans nier la douleur ou prétendre que tout est positif. Répondez à trois questions : Qu’ai-je appris ? Qu’est-ce que cela a révélé ? Que puis-je choisir maintenant ?`},{title:`Ne juger personne, surtout pas soi-même`,text:`Remplacez le jugement par l’observation, la compréhension et la responsabilité personnelle. Reformulez une autocritique en constat neutre suivi d’une action utile.`},{title:`Être attentif sans se prendre la tête`,text:`Développez une attitude de présence souple, sans chercher à contrôler chaque pensée. Observez vos pensées pendant deux minutes en les laissant passer sans les analyser.`}],[{title:`Clarifier ce que vous voulez vraiment`,text:`Distinguez vos propres désirs des attentes familiales, sociales ou professionnelles. Complétez la phrase : Si personne ne me jugeait, je choisirais de.`},{title:`Transformer une envie en objectif`,text:`Passez d’une intention vague à un résultat clairement défini et mesurable. Reformulez je veux réussir en objectif spécifique et observable.`},{title:`Vérifier qu’un objectif est réalisable`,text:`Testez la cohérence de votre objectif avec vos ressources, votre temps, vos compétences et votre contexte. Évaluez-le avec quatre questions : pourquoi, quoi, avec quelles ressources et dans quel délai ?`},{title:`Croire que l’objectif est possible`,text:`Construisez une croyance réaliste fondée sur des preuves et des étapes concrètes. Recensez trois réussites passées et trois personnes ou exemples qui montrent que l’objectif est envisageable.`},{title:`Passer de l’objectif aux prochaines actions`,text:`Réduisez un grand projet à une action suffisamment petite pour être commencée immédiatement. Définissez la prochaine action réalisable en moins de 30 minutes.`},{title:`Prioriser ce qui compte`,text:`Distinguez l’urgent, l’important, le secondaire et le distrayant dans votre quotidien. Choisissez trois priorités pour la semaine et éliminez une activité inutile.`},{title:`Maîtriser la relation entre attitude et compétences`,text:`Comprenez que les compétences donnent des moyens, tandis que l’attitude influence la persévérance, l’apprentissage et l’utilisation de ces moyens. Identifiez une compétence à développer et l’attitude nécessaire pour la pratiquer régulièrement.`},{title:`Comprendre les quatre phases de l’apprentissage`,text:`Découvrez les étapes : incompétence inconsciente, incompétence consciente, compétence consciente et compétence inconsciente. Positionnez une compétence personnelle dans l’une des quatre phases.`},{title:`Adopter une dynamique d’apprentissage`,text:`Remplacez je ne sais pas faire par je ne sais pas encore faire. Transformez un échec récent en plan d’apprentissage en trois étapes.`},{title:`Accepter le changement`,text:`Comprenez les résistances liées à la perte d’habitudes, d’identité ou de sécurité. Identifiez ce qu’il faut arrêter, commencer et continuer pour avancer.`},{title:`Gérer la procrastination`,text:`Repérez la peur, le perfectionnisme, la confusion ou le manque d’énergie derrière le report. Appliquez la règle des cinq minutes sur une tâche importante.`},{title:`Maîtriser son cercle de cœur`,text:`Entourez-vous de personnes qui apportent confiance, honnêteté, soutien et énergie constructive. Classez vos relations selon ce qu’elles nourrissent : confiance, apprentissage, joie ou épuisement.`},{title:`Développer son cercle de business`,text:`Construisez un réseau fondé sur la valeur, la confiance, la réciprocité et la complémentarité. Identifiez cinq contacts à remercier, aider ou recontacter.`},{title:`Valoriser les personnes que l’on croise`,text:`Renforcez vos relations par la reconnaissance sincère et l’attention portée aux autres. Envoyez un message précis de gratitude à une personne.`},{title:`Maîtriser les 12 grands principes de réussite`,text:`Réunissez les apprentissages du programme dans un système personnel cohérent. Choisissez vos 12 principes directeurs et transformez-les en comportements observables.`}]];
+function hpLearnLabels(){
+ if(lang==='en') return {lessons:'LESSONS',books:'BOOKS',goal:'Books to achieve your goals',finance:'Books to improve your finances',regen:'Books for natural regeneration'};
+ if(lang==='es') return {lessons:'LECCIONES',books:'LIBROS',goal:'Libros para alcanzar tus objetivos',finance:'Libros para mejorar tus finanzas',regen:'Libros para la regeneración natural'};
+ return {lessons:'LEÇONS',books:'LIVRES',goal:'Livres pour atteindre ses objectifs',finance:'Livres pour améliorer vos finances',regen:'Livres pour la régénération naturelle'};
+}
+function hpLocalizedLessons(i){
+ const rows=HP_LESSONS_FULL[i]||[];
+ if(lang==='fr')return rows;
+ const names={en:['Understand your financial reality','Move from money anxiety to clarity','Take full responsibility: cause versus effect','Understand your spending habits','Save without frustration','Build a budget that creates freedom','Master your cash flow','Build your safety fund','Move progressively out of debt','Protect your resources','Who are you listening to, and why?','Distinguish facts, information and opinions','Develop your ability to create value','Increase your income intelligently','Believe that what you want is possible','Learn to negotiate','Understand financial rules','Measure your results','Understand your energy level','Identify what restores and drains you','Feel well now','Observe your feelings','Monitor difficult emotions','Learn to manage your fears','Regulate stress in a few minutes','Create a recovery routine','Improve sleep naturally','Move to restore energy','Eat to support your energy','Eat mindfully','Understand emotional eating','Gratitude and appreciation','Learn from difficult experiences','Judge no one, especially yourself','Stay attentive without overthinking','Clarify what you really want','Turn a wish into a goal','Check whether a goal is achievable','Believe the goal is possible','Move from the goal to the next actions','Prioritize what matters','Master the relationship between attitude and skills','Understand the four learning stages','Adopt a learning mindset','Accept change','Manage procrastination','Strengthen your inner circle','Develop your business circle','Value the people you meet','Master the 12 major success principles'],es:['Comprender tu realidad financiera','Pasar del miedo al dinero a la claridad','Asumir el 100 % de responsabilidad: causa y efecto','Comprender tus hábitos de gasto','Ahorrar sin frustración','Construir un presupuesto que aporte libertad','Dominar tu flujo de caja','Crear tu fondo de seguridad','Salir progresivamente de las deudas','Proteger tus recursos','¿A quién escuchas y por qué?','Distinguir hechos, información y opiniones','Desarrollar tu capacidad para crear valor','Aumentar tus ingresos con inteligencia','Creer que lo que quieres es posible','Aprender a negociar','Comprender las reglas financieras','Medir tus resultados','Comprender tu nivel de energía','Identificar lo que te recarga y te agota','Sentirte bien ahora','Observar tus emociones','Vigilar las emociones difíciles','Aprender a manejar tus miedos','Regular el estrés en pocos minutos','Crear una rutina de recuperación','Mejorar el sueño naturalmente','Moverte para recuperar energía','Alimentarte para sostener tu energía','Comer con atención plena','Comprender la alimentación emocional','Gratitud y apreciación','Aprender de las experiencias difíciles','No juzgar a nadie, especialmente a ti mismo','Mantener la atención sin pensar demasiado','Aclarar lo que realmente quieres','Transformar un deseo en un objetivo','Comprobar si un objetivo es realizable','Creer que el objetivo es posible','Pasar del objetivo a las próximas acciones','Priorizar lo que importa','Dominar la relación entre actitud y competencias','Comprender las cuatro fases del aprendizaje','Adoptar una mentalidad de aprendizaje','Aceptar el cambio','Gestionar la procrastinación','Fortalecer tu círculo cercano','Desarrollar tu círculo profesional','Valorar a las personas que encuentras','Dominar los 12 grandes principios del éxito']}[lang]||[];
+ const offset=i===0?0:i===1?18:35;
+ return rows.map((row,n)=>{const title=names[offset+n]||row.title;const text=lang==='es'?`Esta lección te ayuda a comprender y aplicar «${title}». Identifica tu situación actual y elige una acción concreta para practicar durante los próximos siete días.`:`This lesson helps you understand and apply “${title}”. Identify your current situation and choose one concrete action to practise over the next seven days.`;return {title,text}});
+}
+function hpLessons(i){
+ const rows=hpLocalizedLessons(i);
+ const startNo=(i===0?1:i===1?19:36);
+ return `<div class="hp-lessons">${rows.map((x,n)=>`<button type="button" class="hp-lesson-btn" onclick="hpShowLesson(${i},${n})"><b>${n+startNo}. ${x.title}</b></button>`).join('')}</div><div id="lesson-summary" class="book-summary" style="display:none"></div>`;
+}
+function hpShowLesson(spaceIndex,lessonIndex){
+ const row=(hpLocalizedLessons(spaceIndex)||[])[lessonIndex];
+ const box=document.getElementById('lesson-summary');
+ if(!row||!box) return;
+ box.style.display='block';
+ box.innerHTML=`<h4>${row.title}</h4><p>${row.text}</p>`;
+}
+function hpLearnPanel(i){
+ const L=hpLearnLabels();
+ let category=null, title=L.regen;
+ if(i===0){category='finance';title=L.finance}
+ if(i===2){category='goals';title=L.goal}
+ const books=category ? hpBookList(category) : `<p class="muted">${title}</p>`;
+ return `<div class="hp-learn-grid"><section class="hp-learn-col"><h4>${L.lessons}</h4>${hpLessons(i)}</section><section class="hp-learn-col"><h4>${L.books}</h4>${books}</section></div>`;
+}
+function openSpace(i,mode){
+  const hpWorkspace=document.getElementById('workspace');
+  if(mode==='learn' && hpWorkspace){
+    hpWorkspace.style.display='block';
+    hpWorkspace.hidden=false;
+    hpWorkspace.innerHTML=`<h3>${T[lang].spaces[i]}</h3>${hpLearnPanel(i)}`;
+    hpWorkspace.scrollIntoView({behavior:'smooth',block:'nearest'});
+    return;
+  }
+const key=['finance','regen','goals'][i],w=document.getElementById('workspace');w.classList.add('show');if(mode==='learn'){w.innerHTML=`<h2>${T[lang].learn}</h2><p class="muted">${T[lang].learnHelp}</p><h3>${T[lang].lessons}</h3><div class="lessonlist">${LESSONS[key].map(x=>`<div class="lesson">${x}</div>`).join('')}</div><h3>${T[lang].books}</h3><div class="books">${BOOKS[key].map(x=>`<div class="book">${x}</div>`).join('')}</div>`}else{const suggestions={fr:{finance:'Faire aujourd’hui un état simple de vos revenus, dépenses et épargne.',regen:'Planifier aujourd’hui 15 minutes de récupération sans écran.',goals:'Définir la prochaine action concrète de moins de 30 minutes pour votre objectif prioritaire.'},en:{finance:'Create a simple overview of your income, expenses and savings today.',regen:'Schedule 15 minutes of screen-free recovery today.',goals:'Define the next concrete action of under 30 minutes for your priority goal.'},es:{finance:'Haz hoy un resumen sencillo de tus ingresos, gastos y ahorros.',regen:'Programa hoy 15 minutos de recuperación sin pantallas.',goals:'Define la próxima acción concreta de menos de 30 minutos para tu objetivo prioritario.'}};const sug=suggestions[lang]?.[key]||suggestions.fr[key];w.innerHTML=`<h2>${T[lang].actTitle}</h2><p>${T[lang].actHelp}</p><div class="actionbox"><b>${T[lang].suggest}</b><p>${sug}</p><button class="btn" onclick="confirmAction(this)">${T[lang].validate}</button><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><b>${T[lang].yourAction}</b><textarea id="customAction" placeholder="${T[lang].placeholder}"></textarea><button class="btn" onclick="checkAction('${key}')">${T[lang].check}</button><div id="checkResult" class="checkresult"></div></div>`}}
+function confirmAction(btn){btn.textContent=lang==='fr'?'Action validée ✓':lang==='es'?'Acción validada ✓':'Action validated ✓';btn.disabled=true}
+function checkAction(key){const v=(document.getElementById('customAction').value||'').trim().toLowerCase();const words={finance:['budget','argent','finance','revenu','dépense','épargne','money','income','expense','ahorro','ingreso'],regen:['énergie','sommeil','repos','marche','stress','energy','sleep','rest','descanso','energía'],goals:['objectif','priorité','action','projet','goal','priority','project','objetivo','prioridad']}[key];const specific=v.length>=25&&words.some(w=>v.includes(w));document.getElementById('checkResult').innerHTML=specific?T[lang].compatible:T[lang].review}
+function restart(){idx=0;answers=Array(50).fill(null);results.style.display='none';quiz.style.display='block';renderQuiz()}
+function hpUpdateLanguageButtons(){document.querySelectorAll('.lang').forEach(b=>{const active=b.dataset.l===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active?'true':'false')})}
+document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;window.lang=lang;localStorage.setItem('hp-lang-v172',lang);hpUpdateLanguageButtons();renderIntro();if(results.style.display==='block')showResults();else renderQuiz()});hpUpdateLanguageButtons();renderIntro();renderQuiz();
+</script>
+
+
+
+<script>
+(function(){
+  function trimPriorityAxes(){
+    const candidates=[...document.querySelectorAll('ul,ol,.axes,.priorities,.recommendations,[class*="axis"],[class*="priorit"]')];
+    candidates.forEach(box=>{
+      const txt=(box.textContent||'').toLowerCase();
+      if(!(txt.includes('axe') || txt.includes('priorit'))) return;
+      const items=[...box.querySelectorAll(':scope > li')];
+      if(items.length>3) items.slice(3).forEach(el=>el.remove());
+    });
+  }
+  trimPriorityAxes();
+  const mo=new MutationObserver(trimPriorityAxes);
+  mo.observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+<script>
+(function(){
+  function hpApplyDirectClick(){
+    const q=document.getElementById('quiz');
+    if(!q) return;
+    q.querySelectorAll('button').forEach(btn=>{
+      const t=(btn.textContent||'').trim().toLowerCase();
+      if(['précédent','precedent','previous','suivant','next','anterior','siguiente'].includes(t)){
+        btn.style.display='none';
+      }
+    });
+  }
+  hpApplyDirectClick();
+  new MutationObserver(hpApplyDirectClick).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+<script>
+(function(){
+  function hpColorScores(){
+    document.querySelectorAll('.score').forEach(el=>{
+      const m=(el.textContent||'').match(/(\d+)\s*\/\s*100/);
+      if(!m)return;
+      const v=Math.max(0,Math.min(100,parseInt(m[1],10)));
+      for(let i=1;i<=10;i++)el.classList.remove('hp10-'+i);
+      el.classList.add('hp10-'+Math.max(1,Math.min(10,Math.ceil(v/10))));
+    });
+  }
+  hpColorScores();
+  new MutationObserver(hpColorScores).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+
+
+
+<script>
+(function importantGuards(){
+ function check(){
+  const q=document.getElementById('quiz');
+  if(q) q.querySelectorAll('button').forEach(b=>{
+   const s=(b.textContent||'').trim().toLowerCase();
+   if(['précédent','precedent','suivant','previous','next','anterior','siguiente'].includes(s)) b.remove();
+  });
+ }
+ check(); new MutationObserver(check).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+(function HP_ABSOLUTE_25Q_RULE(){
+  const forbidden=['précédent','precedent','suivant','previous','next','anterior','siguiente'];
+  function enforce(){
+    const quiz=document.getElementById('quiz');
+    if(!quiz) return;
+    quiz.querySelectorAll('button,a,[role="button"]').forEach(el=>{
+      const s=((el.textContent||'')+' '+(el.getAttribute('aria-label')||'')+' '+(el.getAttribute('title')||'')).trim().toLowerCase();
+      if(forbidden.some(w=>s===w || s.startsWith(w+' ') || s.endsWith(' '+w))) el.remove();
+    });
+  }
+  enforce();
+  new MutationObserver(enforce).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+<script>
+(function(){
+ window.hpOpenPayment=function(plan,price){
+   const results=document.getElementById('results');
+   if(!results)return;
+   let box=document.getElementById('hp-payment-box');
+   if(!box){
+     box=document.createElement('section');
+     box.id='hp-payment-box';
+     box.className='hp-paybox';
+     results.appendChild(box);
+   }
+   const L=lang==='fr'?{
+     title:'Informations pour votre engagement',name:'Nom',email:'Email',phone:'Téléphone',country:'Pays',
+     submit:'Valider mes informations',note:'Aucune donnée bancaire n’est demandée ici. Le paiement sécurisé sera connecté ensuite.',
+     enrichTitle:'✦ Profil enrichi Human Wealth',enrichSub:'Facultatif · Ces informations servent à affiner vos futures analyses et propositions d’actions.',job:'Activité / métier',sector:'Secteur',goal:'Objectif principal actuel',optional:'URL facultative',consent:'J’autorise Human Wealth à utiliser les informations que je fournis volontairement pour personnaliser mes analyses et recommandations.',save:'Enregistrer mon profil',preview:'Ce que Human Wealth a compris de moi'
+   }:lang==='es'?{
+     title:'Información para tu compromiso',name:'Nombre',email:'Email',phone:'Teléfono',country:'País',
+     submit:'Validar mis datos',note:'Aquí no se solicitan datos bancarios. El pago seguro se conectará después.',
+     enrichTitle:'✦ Perfil enriquecido Human Wealth',enrichSub:'Opcional · Esta información permite afinar tus futuros análisis y propuestas de acción.',job:'Actividad / profesión',sector:'Sector',goal:'Objetivo principal actual',optional:'URL opcional',consent:'Autorizo a Human Wealth a utilizar la información que proporciono voluntariamente para personalizar mis análisis y recomendaciones.',save:'Guardar mi perfil',preview:'Lo que Human Wealth ha entendido de mí'
+   }:{
+     title:'Information for your commitment',name:'Name',email:'Email',phone:'Phone',country:'Country',
+     submit:'Validate my information',note:'No card details are requested here. Secure payment will be connected next.',
+     enrichTitle:'✦ Enriched Human Wealth profile',enrichSub:'Optional · This information helps refine your future analyses and action proposals.',job:'Occupation / role',sector:'Sector',goal:'Current main goal',optional:'Optional URL',consent:'I authorise Human Wealth to use the information I voluntarily provide to personalise my analyses and recommendations.',save:'Save my profile',preview:'What Human Wealth understands about me'
+   };
+   box.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 3 · Offre + informations client':lang==='es'?'Fase 3 · Oferta + información del cliente':'Phase 3 · Offer + client information'}</div><h3>${L.title} — ${plan} · ${price}</h3><div class="hp-paygrid">
+     <input id="hp-name" placeholder="${L.name}" autocomplete="name" required>
+     <input id="hp-email" placeholder="${L.email}" type="email" autocomplete="email" required>
+     <input id="hp-phone" placeholder="${L.phone}" autocomplete="tel" required>
+     <input id="hp-country" placeholder="${L.country}" autocomplete="country-name" required>
+   </div><section id="hpAiEnrich" class="ai-enrich"><h3>${L.enrichTitle}</h3><div class="sub">${L.enrichSub}</div><div class="ai-grid">
+     <div class="ai-field"><label>${L.job}</label><input id="hpJob" autocomplete="organization-title"></div>
+     <div class="ai-field"><label>${L.sector}</label><input id="hpSector"></div>
+     <div class="ai-field full"><label>${L.goal}</label><textarea id="hpGoal"></textarea></div>
+     <div class="ai-field"><label>LinkedIn</label><input id="hpLinkedin" placeholder="${L.optional}"></div>
+     <div class="ai-field"><label>Instagram</label><input id="hpInstagram" placeholder="${L.optional}"></div>
+     <div class="ai-field"><label>X</label><input id="hpX" placeholder="${L.optional}"></div>
+   </div><label class="ai-consent"><input type="checkbox" id="hpAiConsent"> <span>${L.consent}</span></label><div class="ai-actions">
+     <button class="ai-btn" type="button" onclick="hpSaveEnrichedProfile()">${L.save}</button>
+     <button class="ai-btn secondary" type="button" onclick="hpPreviewUnderstanding()">${L.preview}</button>
+   </div><div id="hpAiStatus" class="ai-status"></div><div id="hpAiUnderstood" class="ai-understood" style="display:none"></div></section>
+   <div class="hp-pay-actions"><button type="button" class="btn" onclick="hpPreparePayment('${plan}','${price}')">${L.submit}</button></div><p class="muted">${L.note}</p><div id="hp-pay-msg"></div>`;
+   try{const p=JSON.parse(localStorage.getItem('humanpath-v18-enriched-profile')||'null');if(p){const map={hpJob:p.job,hpSector:p.sector,hpGoal:p.goal,hpLinkedin:p.social?.linkedin,hpInstagram:p.social?.instagram,hpX:p.social?.x};for(const [id,v] of Object.entries(map)){const e=document.getElementById(id);if(e&&v)e.value=v}const c=document.getElementById('hpAiConsent');if(c)c.checked=!!p.consent}}catch(e){}
+   box.scrollIntoView({behavior:'smooth',block:'nearest'});
+ };
+ window.hpPreparePayment=function(plan,price){
+   const name=(document.getElementById('hp-name')?.value||'').trim();
+   const email=(document.getElementById('hp-email')?.value||'').trim();
+   const phone=(document.getElementById('hp-phone')?.value||'').trim();
+   const country=(document.getElementById('hp-country')?.value||'').trim();
+   const msg=document.getElementById('hp-pay-msg');
+   if(!name || !email || !phone || !country || !/^\S+@\S+\.\S+$/.test(email)){
+     if(msg) msg.textContent=lang==='fr'?'Complétez correctement les quatre informations client.':lang==='es'?'Completa correctamente los cuatro datos del cliente.':'Please complete all four client details correctly.';
+     return;
+   }
+   const client={plan,price,name,email,phone,country,date:new Date().toISOString()};
+   localStorage.setItem('humanpath-v18-selected-offer',JSON.stringify({plan,price}));
+   localStorage.setItem('humanpath-v18-client',JSON.stringify(client));
+   if(msg) msg.innerHTML=lang==='fr'?`<b>Offre et informations client validées.</b> Votre espace de travail est maintenant disponible.`:lang==='es'?`<b>Oferta e información del cliente validadas.</b> Tu espacio de trabajo ya está disponible.`:`<b>Offer and client information validated.</b> Your workspace is now available.`;
+   const gate=document.getElementById('hp-workspace-gate');
+   if(gate){gate.classList.add('show');setTimeout(()=>gate.scrollIntoView({behavior:'smooth',block:'start'}),80);}
+ };
+})();
+</script>
+
+
+<script>
+(function HP_SATISFACTION_IMPORTANT(){
+ function labels(){
+  if(window.lang==='en') return {label:'Satisfaction',validated:'Response validated.',deepen:'What should improve first?',choices:['More concrete','More personalized','More actionable','More detailed']};
+  if(window.lang==='es') return {label:'Satisfacción',validated:'Respuesta validada.',deepen:'¿Qué debería mejorarse primero?',choices:['Más concreto','Más personalizado','Más orientado a la acción','Más detallado']};
+  return {label:'Satisfaction',validated:'Réponse validée.',deepen:'Que faut-il améliorer en priorité ?',choices:['Plus concret','Plus personnalisé','Plus orienté vers l’action','Plus détaillé']};
+ }
+ function scale(targetId){
+  const L=labels();
+  return `<div class="hp-sat-label">${L.label} · 0 → 10</div><div class="hp-sat-scale">${Array.from({length:11},(_,n)=>`<button type="button" class="hp-sat-btn" onclick="hpRateText('${targetId}',${n},this)">${n}</button>`).join('')}</div>`;
+ }
+ window.hpSatisfaction=function(targetId){
+  return `<div class="hp-satisfaction" data-for="${targetId}">${scale(targetId)}<div class="hp-followup" id="${targetId}-followup" style="display:none"></div></div>`;
+ };
+ window.hpRateText=function(targetId,score,btn){
+  const L=labels(),wrap=btn.closest('.hp-satisfaction'),box=document.getElementById(targetId+'-followup');
+  if(!box||!wrap)return;
+  wrap.querySelectorAll('.hp-sat-btn').forEach(x=>x.disabled=true);
+  box.style.display='block';
+  if(score>=7){box.innerHTML=`<b>${L.validated}</b>`;return;}
+  box.innerHTML=`<b>${L.deepen}</b><div class="hp-mcq">${L.choices.map(c=>`<button type="button" class="secondary" onclick="hpRefineText('${targetId}','${c.replace(/'/g,"\\'")}')">${c}</button>`).join('')}</div>`;
+ };
+ function content(targetId,choice){
+  const read=targetId==='hp-reading-text';
+  if(window.lang==='fr'){
+   if(read){
+    const map={
+     'Plus concret':[
+      ['💰 Boostez vos finances','Listez une dépense à réduire. <b>Choisissez une action simple aujourd’hui.</b>'],
+      ['🌿 Régénérez-vous naturellement','Repérez votre fatigue principale. <b>Planifiez une récupération courte aujourd’hui.</b>'],
+      ['🎯 Atteignez tous vos objectifs','Choisissez une priorité. <b>Décidez de la prochaine action maintenant.</b>']],
+     'Plus personnalisé':[
+      ['💰 Boostez vos finances','Reliez vos décisions à votre priorité actuelle. <b>Agissez sur le point le plus fragile.</b>'],
+      ['🌿 Régénérez-vous naturellement','Observez ce qui vous recharge vraiment. <b>Renforcez cette habitude cette semaine.</b>'],
+      ['🎯 Atteignez tous vos objectifs','Adaptez votre objectif à vos ressources. <b>Choisissez une action réaliste maintenant.</b>']],
+     'Plus orienté vers l’action':[
+      ['💰 Boostez vos finances','Décidez d’une action financière. <b>Planifiez-la aujourd’hui.</b>'],
+      ['🌿 Régénérez-vous naturellement','Choisissez une action de récupération. <b>Bloquez-la dans votre journée.</b>'],
+      ['🎯 Atteignez tous vos objectifs','Sélectionnez votre prochaine étape. <b>Commencez-la maintenant.</b>']],
+     'Plus détaillé':[
+      ['💰 Boostez vos finances','Regardez ressources, dépenses et engagements. <b>Choisissez le levier le plus utile.</b>'],
+      ['🌿 Régénérez-vous naturellement','Repérez fatigue, tension et récupération. <b>Corrigez d’abord le facteur principal.</b>'],
+      ['🎯 Atteignez tous vos objectifs','Clarifiez direction, priorité et action. <b>Travaillez dans cet ordre.</b>']]
+    };
+    return (map[choice]||map['Plus concret']).map(r=>`<div class="hp-analysis-space"><h4>${r[0]}</h4><p>${r[1]}</p></div>`).join('');
+   }
+   return `<div class="hp-analysis-space"><h4>💰 Boostez vos finances</h4><p>Décidez avec des faits simples. <b>Protégez une ressource essentielle.</b></p></div><div class="hp-analysis-space"><h4>🌿 Régénérez-vous naturellement</h4><p>Écoutez vos signaux de fatigue. <b>Alternez effort et récupération.</b></p></div><div class="hp-analysis-space"><h4>🎯 Atteignez tous vos objectifs</h4><p>Transformez votre vision en priorité. <b>Avancez par petites actions.</b></p></div>`;
+  }
+  if(window.lang==='es') return read
+   ? `<div class="hp-analysis-space"><h4>💰 Mejora tus finanzas</h4><p>Elige una acción financiera concreta. <b>Hazla hoy.</b></p></div><div class="hp-analysis-space"><h4>🌿 Regénérate de forma natural</h4><p>Detecta tu principal fuente de cansancio. <b>Programa una recuperación breve.</b></p></div><div class="hp-analysis-space"><h4>🎯 Alcanza todos tus objetivos</h4><p>Elige una prioridad. <b>Define la siguiente acción.</b></p></div>`
+   : `<div class="hp-analysis-space"><h4>💰 Mejora tus finanzas</h4><p>Decide con hechos simples. <b>Protege un recurso esencial.</b></p></div><div class="hp-analysis-space"><h4>🌿 Regénérate de forma natural</h4><p>Escucha tus señales de fatiga. <b>Alterna acción y recuperación.</b></p></div><div class="hp-analysis-space"><h4>🎯 Alcanza todos tus objetivos</h4><p>Convierte tu visión en prioridad. <b>Avanza con acciones pequeñas.</b></p></div>`;
+  return read
+   ? `<div class="hp-analysis-space"><h4>💰 Boost your finances</h4><p>Choose one concrete financial action. <b>Do it today.</b></p></div><div class="hp-analysis-space"><h4>🌿 Regenerate naturally</h4><p>Identify your main source of fatigue. <b>Schedule a short recovery action.</b></p></div><div class="hp-analysis-space"><h4>🎯 Achieve all your goals</h4><p>Choose one priority. <b>Define the next action.</b></p></div>`
+   : `<div class="hp-analysis-space"><h4>💰 Boost your finances</h4><p>Decide using simple facts. <b>Protect one essential resource.</b></p></div><div class="hp-analysis-space"><h4>🌿 Regenerate naturally</h4><p>Listen to fatigue signals. <b>Alternate action with recovery.</b></p></div><div class="hp-analysis-space"><h4>🎯 Achieve all your goals</h4><p>Turn your vision into a priority. <b>Move with small actions.</b></p></div>`;
+ }
+ window.hpRefineText=function(targetId,choice){
+  const block=document.getElementById(targetId);
+  if(!block)return;
+  const title=block.querySelector('h2')?.outerHTML||'';
+  block.innerHTML=title+content(targetId,choice);
+  block.insertAdjacentHTML('beforeend',hpSatisfaction(targetId));
+ };
+ function attach(){
+  document.querySelectorAll('.result-block').forEach(block=>{
+   const txt=(block.textContent||'').toLowerCase(); let id=null;
+   if(txt.includes('lecture express')||txt.includes('express reading')||txt.includes('lectura expr'))id='hp-reading-text';
+   if(txt.includes('profil de fonctionnement')||txt.includes('functioning profile')||txt.includes('perfil de funcionamiento')||txt.includes('potentiels à développer')||txt.includes('potential to develop')||txt.includes('potencial a desarrollar'))id='hp-profile-text';
+   if(!id||block.querySelector('.hp-satisfaction'))return;
+   block.id=id; block.insertAdjacentHTML('beforeend',hpSatisfaction(id));
+  });
+ }
+ attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+<script id="hp-v18-engine">
+const HP_AI_V18={
+ version:"18.1",
+ apiBase:"/api",
+ endpoints:{
+  analyze:"/assessment/analyze",
+  reading:"/ai/reading",
+  profile:"/ai/profile",
+  actions:"/ai/actions",
+  enrich:"/profile/enrich",
+  social:"/profile/social",
+  validateInsight:"/profile/validate-insight",
+  feedback:"/feedback"
+ },
+ rules:{
+  reading:{paragraphs:3,numbers:false,focus:"development_opportunities"},
+  profile:{paragraphs:3,numbers:false,focus:"development_potential"},
+  actions:{requiresUserValidation:true,count:3}, satisfaction:{regenerateBelow:7,validateFrom:7}
+ }
+};
+
+function hpGetEnrichedProfile(){
+ return {
+  job:(document.getElementById("hpJob")?.value||"").trim(),
+  sector:(document.getElementById("hpSector")?.value||"").trim(),
+  goal:(document.getElementById("hpGoal")?.value||"").trim(),
+  social:{
+   linkedin:(document.getElementById("hpLinkedin")?.value||"").trim(),
+   instagram:(document.getElementById("hpInstagram")?.value||"").trim(),
+   x:(document.getElementById("hpX")?.value||"").trim()
+  },
+  consent:!!document.getElementById("hpAiConsent")?.checked
+ };
+}
+function hpSaveEnrichedProfile(){
+ const p=hpGetEnrichedProfile(), st=document.getElementById("hpAiStatus");
+ const L=lang==='en'?{consent:'Please authorise the use of the information provided before saving.',saved:'Enriched profile saved locally. The connected AI will only use authorised data.'}:lang==='es'?{consent:'Autoriza el uso de la información proporcionada antes de guardarla.',saved:'Perfil enriquecido guardado localmente. La IA conectada sólo utilizará los datos autorizados.'}:{consent:'Veuillez autoriser l’utilisation des informations fournies avant l’enregistrement.',saved:'Profil enrichi enregistré localement. L’IA connectée utilisera uniquement les données autorisées.'};
+ if(!p.consent){if(st)st.textContent=L.consent;return;}
+ localStorage.setItem("humanpath-v18-enriched-profile",JSON.stringify(p));
+ if(st)st.textContent=L.saved;
+}
+function hpPreviewUnderstanding(){
+ const p=hpGetEnrichedProfile(), box=document.getElementById("hpAiUnderstood");
+ if(!box)return;
+ const L=lang==='en'?{activity:'Occupation',sector:'Sector',goal:'Current goal',provided:'profile voluntarily provided',title:'What Human Wealth understands about you',empty:'No additional information has been provided yet.',note:'In the connected version, every inferred item must be available for validation, correction or deletion.'}:lang==='es'?{activity:'Actividad',sector:'Sector',goal:'Objetivo actual',provided:'perfil proporcionado voluntariamente',title:'Lo que Human Wealth ha entendido de ti',empty:'Todavía no se ha proporcionado información adicional.',note:'En la versión conectada, cada información deducida deberá poder validarse, corregirse o eliminarse.'}:{activity:'Activité',sector:'Secteur',goal:'Objectif actuel',provided:'profil fourni volontairement',title:'Ce que Human Wealth a compris de vous',empty:'Aucune information complémentaire n’a encore été renseignée.',note:'Dans la version connectée, chaque information déduite devra pouvoir être validée, corrigée ou supprimée.'};
+ const items=[];
+ if(p.job)items.push(`<li><b>${L.activity} :</b> ${hpEscape(p.job)}</li>`);
+ if(p.sector)items.push(`<li><b>${L.sector} :</b> ${hpEscape(p.sector)}</li>`);
+ if(p.goal)items.push(`<li><b>${L.goal} :</b> ${hpEscape(p.goal)}</li>`);
+ if(p.social.linkedin)items.push(`<li><b>LinkedIn :</b> ${L.provided}</li>`);
+ if(p.social.instagram)items.push(`<li><b>Instagram :</b> ${L.provided}</li>`);
+ if(p.social.x)items.push(`<li><b>X :</b> ${L.provided}</li>`);
+ box.innerHTML=`<b>${L.title}</b>${items.length?`<ul>${items.join("")}</ul>`:`<p>${L.empty}</p>`}<p style="font-size:12px;opacity:.72">${L.note}</p>`;
+ box.style.display="block";
+}
+function hpEscape(v){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+(function hpLoadEnriched(){
+ try{
+  const p=JSON.parse(localStorage.getItem("humanpath-v18-enriched-profile")||"null"); if(!p)return;
+  const map={hpJob:p.job,hpSector:p.sector,hpGoal:p.goal,hpLinkedin:p.social?.linkedin,hpInstagram:p.social?.instagram,hpX:p.social?.x};
+  addEventListener("DOMContentLoaded",()=>{for(const [id,v] of Object.entries(map)){const e=document.getElementById(id);if(e&&v)e.value=v}const c=document.getElementById("hpAiConsent");if(c)c.checked=!!p.consent});
+ }catch(e){}
+})();
+</script>
+
+
+<script id="hp-v181-action-engine">
+HP_AI_V18.actionSelection={
+ objective:"Proposer UNE action particulièrement intéressante, vitale et prioritaire pour faire progresser l’objectif principal de l’utilisateur maintenant.",
+ principle:"Choisir l’action au plus fort effet de levier, pas une action générique.",
+ useAvailableAuthorizedInformation:true,
+ sources:[
+  "questionnaire_50q",
+  "human_path_scores",
+  "lecture_express",
+  "functioning_profile",
+  "three_priority_axes",
+  "current_goal",
+  "declared_context",
+  "action_history",
+  "completed_actions",
+  "refused_actions",
+  "enriched_profile",
+  "validated_linkedin_information",
+  "validated_instagram_information",
+  "validated_x_information"
+ ],
+ selectionRules:[
+  "directement_liee_a_objectif",
+  "vitale_ou_decisive",
+  "plus_fort_effet_de_levier",
+  "personnalisee",
+  "concrete",
+  "realisable_maintenant",
+  "non_generique",
+  "coherente_avec_priorites",
+  "tient_compte_historique"
+ ],
+ output:{
+  count:1,
+  title:"Action proposée",
+  fields:["action","pourquoi_cette_action_est_prioritaire","premiere_etape","resultat_attendu"]
+ }
+};
+</script>
+
+<script id="hp-v1812-action-context">
+function hpBuildActionContext(){
+  let enriched={};
+  try{ enriched=JSON.parse(localStorage.getItem("humanpath-v18-enriched-profile")||"{}"); }catch(e){}
+  return {
+    answers: typeof answers!=="undefined" ? answers.slice(0,50) : [],
+    scores: typeof lastScores!=="undefined" ? lastScores : null,
+    enrichedProfile: enriched,
+    goal: enriched.goal || "",
+    social: enriched.social || {},
+    instruction: "Proposer UNE action particulièrement intéressante, vitale, prioritaire et à fort effet de levier pour l’objectif principal de cet utilisateur. Utiliser toutes les informations disponibles et autorisées. Ne pas proposer une action générique."
+  };
+}
+</script>
+
+<script id="hw-v185-questionnaire">
+const HW_Q50={
+fr:[
+"Je commence généralement ma journée avec suffisamment d’énergie pour agir.","Je sais rapidement améliorer mon état lorsque mon énergie ou mon moral baisse.","Mes objectifs me donnent naturellement envie de passer à l’action.","Je prends régulièrement soin de moi avant de vouloir aider les autres.","Je garde une énergie relativement stable face aux difficultés.","Les activités que je poursuis me procurent davantage d’énergie qu’elles ne m’en prennent.","Je sais identifier les pensées ou situations qui diminuent mon énergie.","J’entretiens régulièrement mon énergie mentale par l’apprentissage, la lecture, l’écoute ou de nouvelles expériences.",
+"Je sais clairement ce que je veux construire dans les prochaines années.","J’ai un objectif principal suffisamment précis pour guider mes décisions.","Ma vision est assez ambitieuse pour réellement me motiver.","Je suis capable de prendre une décision importante sans attendre d’avoir toutes les réponses.","Je transforme rapidement une décision importante en action concrète.","Je persévère lorsqu’un projet important rencontre des difficultés.","Je suis capable de voir des possibilités que d’autres ne voient pas immédiatement.","Je préfère développer mes points forts plutôt que consacrer toute mon énergie à mes faiblesses.","Je peux expliquer clairement à quelqu’un où je veux aller et pourquoi.",
+"Je sais distinguer ce qui est réellement important de ce qui est simplement urgent.","Je connais mes trois priorités principales du moment.","Je concentre mon attention sur la prochaine étape réellement utile.","Je termine généralement une étape importante avant de me disperser sur la suivante.","Mes activités quotidiennes sont cohérentes avec mes objectifs principaux.","Je consacre régulièrement du temps à apprendre et progresser.","Je passe suffisamment vite de la réflexion à l’action.","Je sais abandonner ou réduire une activité qui consomme du temps sans contribuer suffisamment à mes objectifs.",
+"J’entretiens activement des relations avec des personnes qui m’inspirent ou me font progresser.","Je dispose de personnes plus expérimentées que moi auxquelles je peux demander conseil.","Je consacre du temps à développer mon réseau avant d’en avoir besoin.","Dans une conversation importante, je sais écouter davantage que parler.","Je pose des questions pour comprendre réellement les besoins et motivations de mon interlocuteur.","Je mets régulièrement des personnes de mon réseau en relation lorsqu’elles peuvent s’aider mutuellement.","Mon entourage principal soutient globalement mes ambitions et mon évolution.","Je participe suffisamment à des rencontres, événements ou communautés qui élargissent mes possibilités.",
+"Je connais précisément ma situation financière actuelle.","J’ai défini un objectif financier concret et mesurable.","Je sais clairement ce que davantage de ressources financières me permettraient de réaliser.","Je maîtrise suffisamment mes dépenses pour dégager une capacité d’épargne ou d’investissement.","Je distingue une dépense de consommation d’une dépense susceptible de créer de la valeur.","Je cherche à faire travailler une partie de mes ressources financières plutôt qu’à dépendre uniquement de mon travail.","J’ai une stratégie pour réduire les dettes qui fragilisent ma situation financière.","Je développe activement mes connaissances financières.","Je cherche régulièrement de nouvelles façons d’augmenter mes revenus ou mes actifs.",
+"Je crois pouvoir apprendre les compétences nécessaires pour atteindre un objectif ambitieux.","Je suis disposé à modifier une habitude ou une méthode lorsqu’elle ne produit plus les résultats souhaités.","Un échec me conduit davantage à chercher une nouvelle approche qu’à conclure que je suis incapable.","Je sais remettre en question une opinion que je considère depuis longtemps comme vraie.","Je prends la responsabilité de ce que je peux changer plutôt que de me concentrer sur ce que je ne contrôle pas.","Lorsque je veux quelque chose d’important, je me concentre davantage sur les possibilités que sur les raisons pour lesquelles cela pourrait échouer.","La peur de l’échec ne m’empêche généralement pas d’essayer quelque chose d’important.","Je considère que ma situation actuelle peut évoluer significativement grâce à mes décisions et à mes actions."
+],
+en:[
+"I usually start my day with enough energy to take action.","I can quickly improve my state when my energy or mood drops.","My goals naturally make me want to take action.","I regularly take care of myself before trying to help others.","I maintain relatively stable energy when facing difficulties.","The activities I pursue give me more energy than they consume.","I can identify the thoughts or situations that reduce my energy.","I regularly nourish my mental energy through learning, reading, listening or new experiences.",
+"I clearly know what I want to build over the next few years.","I have a main goal precise enough to guide my decisions.","My vision is ambitious enough to genuinely motivate me.","I can make an important decision without waiting for every answer.","I quickly turn an important decision into concrete action.","I persevere when an important project encounters difficulties.","I can see possibilities that others do not immediately notice.","I prefer developing my strengths to spending all my energy on weaknesses.","I can clearly explain where I want to go and why.",
+"I can distinguish what is truly important from what is merely urgent.","I know my three main priorities right now.","I focus my attention on the next genuinely useful step.","I usually complete an important step before scattering my attention.","My daily activities are consistent with my main goals.","I regularly dedicate time to learning and progressing.","I move from reflection to action quickly enough.","I can stop or reduce an activity that consumes time without sufficiently supporting my goals.",
+"I actively maintain relationships with people who inspire me or help me progress.","I have more experienced people whom I can ask for advice.","I invest time in developing my network before I need it.","In an important conversation, I listen more than I speak.","I ask questions to truly understand the needs and motivations of the other person.","I regularly connect people in my network when they can help one another.","The people closest to me generally support my ambitions and growth.","I participate enough in meetings, events or communities that expand my possibilities.",
+"I know my current financial situation precisely.","I have defined a concrete and measurable financial goal.","I clearly know what greater financial resources would allow me to achieve.","I control my spending enough to create capacity for saving or investing.","I distinguish consumption spending from spending that can create value.","I seek to make part of my financial resources work instead of relying only on my labour.","I have a strategy for reducing debts that weaken my financial position.","I actively develop my financial knowledge.","I regularly seek new ways to increase my income or assets.",
+"I believe I can learn the skills needed to achieve an ambitious goal.","I am willing to change a habit or method when it no longer produces the desired results.","Failure leads me to seek a new approach rather than conclude that I am incapable.","I can question an opinion I have long considered true.","I take responsibility for what I can change instead of focusing on what I cannot control.","When I want something important, I focus more on possibilities than on reasons it might fail.","Fear of failure generally does not prevent me from trying something important.","I believe my current situation can change significantly through my decisions and actions."
+],
+es:[
+"Generalmente comienzo el día con suficiente energía para actuar.","Sé mejorar rápidamente mi estado cuando baja mi energía o mi ánimo.","Mis objetivos me dan naturalmente ganas de pasar a la acción.","Me cuido regularmente antes de querer ayudar a los demás.","Mantengo una energía relativamente estable ante las dificultades.","Las actividades que realizo me aportan más energía de la que consumen.","Sé identificar los pensamientos o situaciones que reducen mi energía.","Alimento regularmente mi energía mental mediante el aprendizaje, la lectura, la escucha o nuevas experiencias.",
+"Sé claramente lo que quiero construir en los próximos años.","Tengo un objetivo principal suficientemente preciso para orientar mis decisiones.","Mi visión es lo bastante ambiciosa para motivarme de verdad.","Puedo tomar una decisión importante sin esperar a tener todas las respuestas.","Transformo rápidamente una decisión importante en una acción concreta.","Persevero cuando un proyecto importante encuentra dificultades.","Puedo ver posibilidades que otras personas no perciben inmediatamente.","Prefiero desarrollar mis fortalezas a dedicar toda mi energía a mis debilidades.","Puedo explicar claramente adónde quiero llegar y por qué.",
+"Sé distinguir lo realmente importante de lo simplemente urgente.","Conozco mis tres prioridades principales del momento.","Concentro mi atención en el siguiente paso realmente útil.","Suelo terminar una etapa importante antes de dispersarme en la siguiente.","Mis actividades diarias son coherentes con mis objetivos principales.","Dedico regularmente tiempo a aprender y progresar.","Paso de la reflexión a la acción con suficiente rapidez.","Sé abandonar o reducir una actividad que consume tiempo sin contribuir suficientemente a mis objetivos.",
+"Mantengo activamente relaciones con personas que me inspiran o me ayudan a progresar.","Cuento con personas más experimentadas a quienes puedo pedir consejo.","Dedico tiempo a desarrollar mi red antes de necesitarla.","En una conversación importante, sé escuchar más que hablar.","Hago preguntas para comprender realmente las necesidades y motivaciones de mi interlocutor.","Conecto regularmente a personas de mi red cuando pueden ayudarse mutuamente.","Mi entorno cercano apoya globalmente mis ambiciones y mi evolución.","Participo suficientemente en encuentros, eventos o comunidades que amplían mis posibilidades.",
+"Conozco con precisión mi situación financiera actual.","He definido un objetivo financiero concreto y medible.","Sé claramente qué me permitirían realizar mayores recursos financieros.","Controlo suficientemente mis gastos para generar capacidad de ahorro o inversión.","Distingo un gasto de consumo de un gasto capaz de crear valor.","Busco poner a trabajar una parte de mis recursos financieros en lugar de depender únicamente de mi trabajo.","Tengo una estrategia para reducir las deudas que debilitan mi situación financiera.","Desarrollo activamente mis conocimientos financieros.","Busco regularmente nuevas formas de aumentar mis ingresos o mis activos.",
+"Creo que puedo aprender las competencias necesarias para alcanzar un objetivo ambicioso.","Estoy dispuesto a cambiar un hábito o método cuando deja de producir los resultados deseados.","Un fracaso me lleva a buscar un nuevo enfoque en lugar de concluir que soy incapaz.","Sé cuestionar una opinión que durante mucho tiempo he considerado verdadera.","Asumo la responsabilidad de lo que puedo cambiar en vez de concentrarme en lo que no controlo.","Cuando quiero algo importante, me concentro más en las posibilidades que en las razones por las que podría fracasar.","El miedo al fracaso generalmente no me impide intentar algo importante.","Considero que mi situación actual puede evolucionar significativamente gracias a mis decisiones y acciones."
+]};
+const HW_RANGES=[[0,8],[8,17],[17,25],[25,33],[33,42],[42,50]];
+const HW_SCALE={fr:['Pas du tout','Rarement','Parfois','Souvent','Tout à fait'],en:['Not at all','Rarely','Sometimes','Often','Completely'],es:['Nada','Raramente','A veces','A menudo','Totalmente']};
+function hwQuestionCategory(i){return i<8?0:i<17?1:i<25?2:i<33?3:i<42?4:5}
+allQ=function(){return HW_Q50[lang].map((text,i)=>[T[lang].dims[hwQuestionCategory(i)],text,'scale5'])};
+renderQuiz=function(){
+ const x=allQ()[idx],labels=HW_SCALE[lang],instruction=lang==='fr'?'Évaluez chaque affirmation de 1 à 5.':lang==='es'?'Evalúa cada afirmación del 1 al 5.':'Rate each statement from 1 to 5.';
+ document.documentElement.lang=lang;hpUpdateLanguageButtons();
+ quiz.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 1 · Bilan intelligent — 50 questions':lang==='es'?'Fase 1 · Evaluación inteligente — 50 preguntas':'Phase 1 · Intelligent assessment — 50 questions'}</div><div class="eyebrow">${T[lang].assessment}</div><h1>${T[lang].subtitle}</h1><p class="muted">${instruction}<br><b>1</b> = ${labels[0]} · <b>2</b> = ${labels[1]} · <b>3</b> = ${labels[2]} · <b>4</b> = ${labels[3]} · <b>5</b> = ${labels[4]}</p><div class="bar"><i style="width:${(idx+1)/50*100}%"></i></div><p class="eyebrow" style="margin-top:20px">${T[lang].question} ${idx+1}/50 · ${x[0]}</p><h2>${x[1]}</h2><div class="answers scale5">${[1,2,3,4,5].map(n=>`<button class="btn scale-choice ${answers[idx]===n?'active':''}" onclick="setAnswer(${n})" aria-label="${n} — ${labels[n-1]}">${n}</button>`).join('')}</div><div class="scale-legend">${labels.map(x=>`<span>${x}</span>`).join('')}</div>`;
+};
+function hwScores(){const s={},d=T[lang].dims;HW_RANGES.forEach(([a,b],di)=>{const vals=answers.slice(a,b).map(Number);const avg=vals.reduce((x,y)=>x+y,0)/vals.length;const positiveScore=Math.round((avg-1)*25);s[d[di]]=di===5?100-positiveScore:positiveScore});return s}
+function hwDevelopmentValue(label,value,d){return label===d[5]?100-value:value}
+function hwAnalysis(s,d){
+ const ordered=Object.entries(s).sort((a,b)=>hwDevelopmentValue(a[0],a[1],d)-hwDevelopmentValue(b[0],b[1],d)),weak=ordered[0],strong=ordered[ordered.length-1],mid=Math.round(Object.entries(s).reduce((total,[label,value])=>total+hwDevelopmentValue(label,value,d),0)/6),beliefWeak=weak[0]===d[5];
+ const L=lang==='fr'?{title:'4 · ANALYSE APPROFONDIE',lead:`Votre profil global atteint ${mid}/100. Il révèle un potentiel réel, avec un écart précis à transformer en progression visible.`,strength:'Votre avantage actuel',risk:'Votre frein prioritaire',opportunity:'Votre potentiel de progression',commit:'Votre engagement des 7 prochains jours',strongText:`${strong[0]} est aujourd’hui votre meilleur point d’appui. Utilisez cette force pour soutenir les dimensions moins développées.`,riskText:`${weak[0]} limite actuellement votre progression. Une amélioration ciblée ici produira l’effet le plus visible.`,opportunityText:beliefWeak?`Une baisse de 10 points du score Croyances limitantes renforcera la cohérence de l’ensemble de votre profil.`:`Un gain de 10 points sur ${weak[0]} renforcera la cohérence de l’ensemble de votre profil.`,commitText:beliefWeak?`Identifiez une croyance qui vous freine et confrontez-la à une preuve concrète avant la fin des sept prochains jours.`:`Choisissez une action mesurable liée à ${weak[0]} et réalisez-la avant la fin des sept prochains jours.`}:lang==='es'?{title:'4 · ANÁLISIS PROFUNDO',lead:`Tu perfil global alcanza ${mid}/100. Revela un potencial real y una diferencia concreta que transformar en progreso visible.`,strength:'Tu ventaja actual',risk:'Tu freno prioritario',opportunity:'Tu potencial de progreso',commit:'Tu compromiso para los próximos 7 días',strongText:`${strong[0]} es actualmente tu mejor punto de apoyo. Utiliza esta fuerza para reforzar las dimensiones menos desarrolladas.`,riskText:`${weak[0]} limita actualmente tu progreso. Una mejora específica aquí producirá el efecto más visible.`,opportunityText:beliefWeak?`Una reducción de 10 puntos en Creencias limitantes reforzará la coherencia de todo tu perfil.`:`Una ganancia de 10 puntos en ${weak[0]} reforzará la coherencia de todo tu perfil.`,commitText:beliefWeak?`Identifica una creencia que te frena y compárala con una prueba concreta antes de que terminen los próximos siete días.`:`Elige una acción medible relacionada con ${weak[0]} y complétala antes de que terminen los próximos siete días.`}:{title:'4 · IN-DEPTH ANALYSIS',lead:`Your overall profile reaches ${mid}/100. It reveals genuine potential and a precise gap to turn into visible progress.`,strength:'Your current advantage',risk:'Your priority constraint',opportunity:'Your growth potential',commit:'Your 7-day commitment',strongText:`${strong[0]} is currently your strongest asset. Use it to support the less developed dimensions.`,riskText:`${weak[0]} currently limits your progress. A focused improvement here will produce the most visible effect.`,opportunityText:beliefWeak?`A 10-point reduction in Limiting beliefs will strengthen the consistency of your entire profile.`:`A 10-point gain in ${weak[0]} will strengthen the consistency of your entire profile.`,commitText:beliefWeak?`Identify one belief that holds you back and challenge it with concrete evidence within the next seven days.`:`Choose one measurable action linked to ${weak[0]} and complete it within the next seven days.`};
+ return `<h2>${L.title}</h2><p class="analysis-lead">${L.lead}</p><div class="analysis-grid"><div class="analysis-panel"><h3>${L.strength}</h3><p><b>${strong[0]} · ${strong[1]}/100</b></p><p>${L.strongText}</p></div><div class="analysis-panel"><h3>${L.risk}</h3><p><b>${weak[0]} · ${weak[1]}/100</b></p><p>${L.riskText}</p></div><div class="analysis-panel"><h3>${L.opportunity}</h3><p>${L.opportunityText}</p></div><div class="analysis-panel analysis-priority"><h3>${L.commit}</h3><p>${L.commitText}</p></div></div>`;
+}
+showResults=function(){
+ const d=T[lang].dims,s=hwScores(),ordered=Object.entries(s).sort((a,b)=>hwDevelopmentValue(a[0],a[1],d)-hwDevelopmentValue(b[0],b[1],d)),weak=ordered[0];window.hpLastScores=s;quiz.style.display='none';results.style.display='block';
+ const engage=lang==='fr'?`Votre priorité immédiate est <b>${weak[0]}</b>. Le parcours recommandé doit d’abord transformer ce point en progrès concret et mesurable.`:lang==='es'?`Tu prioridad inmediata es <b>${weak[0]}</b>. El recorrido recomendado debe transformar primero este punto en un progreso concreto y medible.`:`Your immediate priority is <b>${weak[0]}</b>. The recommended path should first turn this point into concrete, measurable progress.`;
+ results.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 2 · Résultats + offres':lang==='es'?'Fase 2 · Resultados + ofertas':'Phase 2 · Results + offers'}</div><div class="eyebrow">${T[lang].result}</div><h1>Human Wealth</h1><div class="scoregrid">${Object.entries(s).map(([k,v])=>`<div class="score ${scoreClass(v)}"><b>${v}/100</b><span>${k}</span></div>`).join('')}</div><section class="result-block"><h2>${T[lang].expressTitle}</h2>${hpReading(s,d)}</section><section class="result-block"><h2>${T[lang].profileTitle}</h2>${hpProfile(s,d)}</section><section class="result-block"><h2>${T[lang].nextTitle}</h2><h3>${T[lang].axes}</h3><div class="axes">${ordered.slice(0,3).map((x,i)=>`<div class="axis"><b>${i+1}. ${x[0]}</b><span class="axis-baseline">${hpAxisBaseline(x[0])}</span></div>`).join('')}</div><div class="engagement-callout">${engage}</div></section><section class="deep-analysis">${hwAnalysis(s,d)}</section>${packages()}<section id="hp-workspace-gate" class="hp-workspace-gate"><div class="hp-phase">${lang==='fr'?'Phase 4 · Espace de travail':lang==='es'?'Fase 4 · Espacio de trabajo':'Phase 4 · Workspace'}</div><div class="eyebrow">${T[lang].workspaceTitle}</div><p class="muted">${T[lang].workspaceHelp}</p><div class="spaces">${[0,1,2].map(i=>`<article class="space"><h3>${T[lang].spaces[i]}</h3><p class="muted">${T[lang].spaceDesc[i]}</p><div class="modegrid"><button class="mode" onclick="openSpace(${i},'learn')">${T[lang].learn}</button><button class="mode" onclick="openSpace(${i},'act')">${T[lang].act}</button></div></article>`).join('')}</div><div id="workspace" class="workspace"></div></section><button class="btn" style="margin-top:24px" onclick="restart()">${T[lang].restart}</button>`;
+ hpStartTimers();localStorage.setItem('humanwealth-v185-result',JSON.stringify({lang,scores:s,answers,date:new Date().toISOString()}));
+};
+answers=Array(50).fill(null);idx=0;renderQuiz();
+</script>
+<script id="hw-belief-score-color-fix">
+(function(){
+ function enforceBeliefScoreColor(){
+  document.querySelectorAll('.score').forEach(card=>{
+   const text=(card.textContent||'').toLowerCase();
+   const isBelief=text.includes('croyances limitantes')||text.includes('limiting beliefs')||text.includes('creencias limitantes');
+   if(!isBelief)return;
+   const match=text.match(/(\d+)\s*\/\s*100/);if(!match)return;
+   const value=Math.max(0,Math.min(100,Number(match[1])));
+   const tone=value<=20?{bg:'linear-gradient(145deg,#2f9963,#1f744b)',border:'#17613d'}:value<=40?{bg:'linear-gradient(145deg,#ed941f,#c96a08)',border:'#a85b08'}:{bg:'linear-gradient(145deg,#c83e3e,#9f2727)',border:'#8f2323'};
+   card.style.setProperty('background',tone.bg,'important');
+   card.style.setProperty('border-color',tone.border,'important');
+   card.dataset.beliefTone=value<=20?'green':value<=40?'orange':'red';
+  });
+ }
+ enforceBeliefScoreColor();
+ new MutationObserver(enforceBeliefScoreColor).observe(document.getElementById('results'),{childList:true,subtree:true});
+})();
+</script>
+<script id="hw-previous-question-control">
+(function(){
+ const baseRender=renderQuiz;
+ window.goToPreviousQuestion=function(){
+  if(idx<=0)return;
+  idx-=1;
+  results.style.display='none';
+  quiz.style.display='block';
+  renderQuiz();
+ };
+ renderQuiz=function(){
+  baseRender();
+  if(idx<=0)return;
+  const labels=lang==='fr'?{text:'← Corriger ma réponse précédente',aria:'Revenir à la question précédente'}:lang==='es'?{text:'← Corregir la respuesta de antes',aria:'Volver una pregunta para corregir la respuesta'}:{text:'← Correct my previous answer',aria:'Return to the previous question'};
+  quiz.insertAdjacentHTML('beforeend',`<div class="question-back-wrap"><button type="button" class="question-back" onclick="goToPreviousQuestion()" aria-label="${labels.aria}">${labels.text}</button></div>`);
+ };
+ renderQuiz();
+})();
+</script>
+<script src="typologies.js"></script>
+<script src="typology-reading.js"></script>
+<script src="profiles-pdf.js"></script>
+</body></html>
