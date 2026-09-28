@@ -739,7 +739,8 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
    }
    const social=(linkedin||instagram)?`%0A${encodeURIComponent(lang==='fr'?'Réseaux sociaux':lang==='es'?'Redes sociales':'Social links')} :${linkedin?`%0ALinkedIn : ${encodeURIComponent(linkedin)}`:''}${instagram?`%0AInstagram : ${encodeURIComponent(instagram)}`:''}`:'';
    const text=lang==='fr'?`Bonjour, je souhaite demander un rendez-vous Human Wealth.%0A%0APrénom : ${encodeURIComponent(first)}%0ANom : ${encodeURIComponent(last)}%0ATéléphone : ${encodeURIComponent(phone)}%0AE-mail : ${encodeURIComponent(email)}${social}%0AOffre choisie : ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`:lang==='es'?`Hola, deseo solicitar una cita con Human Wealth.%0A%0ANombre : ${encodeURIComponent(first)}%0AApellido : ${encodeURIComponent(last)}%0ATeléfono : ${encodeURIComponent(phone)}%0ACorreo electrónico : ${encodeURIComponent(email)}${social}%0AOferta elegida : ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`:`Hello, I would like to request a Human Wealth appointment.%0A%0AFirst name: ${encodeURIComponent(first)}%0ALast name: ${encodeURIComponent(last)}%0AMobile phone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}${social}%0ASelected offer: ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`;
-   window.open(`https://wa.me/33651212175?text=${text}`,'_blank','noopener');
+   const attachmentNote=lang==='fr'?`%0A%0APièce jointe : je joindrai mon bilan PDF Human Wealth à ce message WhatsApp.`:lang==='es'?`%0A%0AAdjunto : adjuntaré mi evaluación PDF de Human Wealth a este mensaje de WhatsApp.`:`%0A%0AAttachment: I will attach my Human Wealth PDF assessment to this WhatsApp message.`;
+   window.open(`https://wa.me/33651212175?text=${text}${attachmentNote}`,'_blank','noopener');
  };
  window.hpOpenPayment=function(plan,price){
    return window.hpOpenWhatsApp(plan,price);
@@ -1107,10 +1108,35 @@ answers=Array(50).fill(null);idx=0;renderQuiz();
     en:'Request my appointment on WhatsApp',
     es:'Solicitar mi cita por WhatsApp'
   };
+  const pdfLabels={
+    fr:{button:'Exporter le bilan en PDF',title:'Bilan Human Wealth',contact:'Contact direct / +33 6 51 21 21 75 — de préférence sur WhatsApp',save:'Dans la fenêtre d’impression, choisissez « Enregistrer au format PDF », puis joignez le fichier à WhatsApp.',whatsapp:'Ouvrir WhatsApp'},
+    en:{button:'Export assessment as PDF',title:'Human Wealth Assessment',contact:'Direct contact / +33 6 51 21 21 75 — preferably on WhatsApp',save:'In the print window, choose “Save as PDF”, then attach the file in WhatsApp.',whatsapp:'Open WhatsApp'},
+    es:{button:'Exportar la evaluación en PDF',title:'Evaluación Human Wealth',contact:'Contacto directo / +33 6 51 21 21 75 — preferiblemente por WhatsApp',save:'En la ventana de impresión, elige «Guardar como PDF» y adjunta el archivo en WhatsApp.',whatsapp:'Abrir WhatsApp'}
+  };
+  window.hwExportPdf=function(){
+    const L=pdfLabels[lang]||pdfLabels.fr;
+    const source=document.getElementById('results');
+    if(!source)return;
+    const print=window.open('','_blank','noopener');
+    if(!print)return;
+    const logo=new URL('Human_Wealth_Logo_Complet_Premium.png',location.href).href;
+    const content=source.cloneNode(true);
+    content.querySelectorAll('button,#hw-export-pdf-wrap,#hp-workspace-gate,.timer,.deep-analysis').forEach(el=>el.remove());
+    print.document.write(`<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><title>${L.title}</title><style>body{font-family:Arial,sans-serif;color:#17110a;max-width:900px;margin:0 auto;padding:30px}header{text-align:center;border-bottom:2px solid #c49a3a;padding-bottom:18px;margin-bottom:22px}header img{max-width:220px;max-height:90px;object-fit:contain}.result-block{margin:18px 0;padding:18px;border:1px solid #d8c28d;border-radius:14px}.scoregrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.score{padding:12px;border:1px solid #d8c28d;border-radius:10px}.score b{display:block;font-size:24px}.hw-typology{padding:16px;border-left:4px solid #b5944b;background:#f5eedf}.hp-analysis-space{padding:10px 0;border-bottom:1px solid #ddd}.contact{margin-top:28px;padding:18px;background:#111;color:#fff;border-radius:14px;text-align:center}.contact a{color:#f2cf7a}.note{font-size:12px;color:#665;margin-top:18px}@media print{.note{display:none}}</style></head><body><header><img src="${logo}" alt="Human Wealth"><h1>${L.title}</h1></header>${content.innerHTML}<section class="contact"><b>${L.contact}</b><br><a href="https://wa.me/33651212175">${L.whatsapp}</a></section><p class="note">${L.save}</p><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);
+    print.document.close();
+  };
   function finalResultAudit(){
     document.querySelectorAll('#results .deep-analysis').forEach(el=>el.remove());
     document.querySelectorAll('#results .commit-btn').forEach(btn=>btn.textContent=appointmentLabels[lang]||appointmentLabels.fr);
     document.querySelectorAll('#results #hp-whatsapp-box .hp-pay-actions .btn').forEach(btn=>btn.textContent=waLabels[lang]||waLabels.fr);
+    const resultsBox=document.getElementById('results');
+    if(resultsBox && resultsBox.style.display!=='none' && !document.getElementById('hw-export-pdf')){
+      const L=pdfLabels[lang]||pdfLabels.fr;
+      const recommendationBlock=[...resultsBox.querySelectorAll('section.result-block')].find(section=>section.querySelector('h2')?.textContent.trim()===T[lang].nextTitle);
+      const button=`<div id="hw-export-pdf-wrap" style="margin:24px 0 8px;text-align:center"><button id="hw-export-pdf" type="button" class="btn" style="width:100%" onclick="window.hwExportPdf()">${L.button}</button><p class="muted" style="margin:8px 0 0;font-size:.86em">${L.save}</p></div>`;
+      if(recommendationBlock) recommendationBlock.insertAdjacentHTML('afterend',button);
+      else resultsBox.insertAdjacentHTML('beforeend',button);
+    } else if(document.getElementById('hw-export-pdf')) document.getElementById('hw-export-pdf').textContent=(pdfLabels[lang]||pdfLabels.fr).button;
     document.querySelectorAll('#results [data-l="fr"],[data-l="en"],[data-l="es"]').forEach(el=>el.setAttribute('lang',el.dataset.l));
   }
   const previousShowResults=window.showResults;
