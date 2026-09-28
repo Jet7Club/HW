@@ -1,58 +1,4 @@
-
-Chargement des messages plus anciens…
-tu peux envoyer les modifs maintenant
-
-J’ai tenté l’envoi automatique, mais il n’y a pas de session GitHub utilisable depuis cet espace pour pousser le fichier.
-
-Le commit de test fonctionne, donc vos droits sont bons. Il manque seulement le transfert du fichier corrigé vers GitHub.
-
-La correction prête est ici :
-
-Sur GitHub :
-
-    Ouvrez Jet7Club/HW.
-    Cliquez sur Add file → Upload files.
-    Déposez ce fichier index.html.
-    Choisissez Commit directly to the main branch.
-    Cliquez sur Commit changes.
-
-Ensuite, attendez 1 à 2 minutes et actualisez le site.
-index.htmlHTML
-Dis moi quand c fini
-
-Ce n’est pas encore fini : la correction est prête, mais le fichier n’est pas encore envoyé sur GitHub.
-
-Après avoir téléversé index.html et cliqué sur Commit changes, écrivez « fait ». Je vérifierai immédiatement que le site est bien mis à jour.
-
-Les modifs sont pas sur 
-https://jet7club.github.io/HW/
-
-Vous avez raison : les modifications ne sont pas encore sur le site.
-
-Le commit effectué était seulement un test avec un espace. La vraie version corrigée n’a pas été envoyée dans index.html.
-
-Pour que je puisse vérifier la mise en ligne, il faut maintenant remplacer le fichier GitHub avec celui-ci :
-
-Puis cliquez sur Commit changes. Après cela, GitHub Pages mettra le site à jour.
-index.htmlHTML
-Je copie Index.html que tu m'as envoyer comment?
-
-Voici la méthode la plus simple :
-
-    Cliquez sur le lien index.html corrigé que je vous ai envoyé.
-    Le fichier s’ouvre.
-    Faites Ctrl + A pour tout sélectionner.
-    Faites Ctrl + C pour copier.
-    Retournez dans GitHub → Jet7Club/HW → index.html.
-    Cliquez sur le crayon Edit this file.
-    Dans la grande zone de code, faites Ctrl + A.
-    Faites Ctrl + V pour coller.
-    En bas, cliquez sur Commit changes.
-
-Ne copiez pas seulement le lien : il faut copier tout le contenu du fichier.
-
-
-<!doctype html> 
+<!doctype html>
 <html lang="fr"><head>
 <!-- Human Wealth V18.6.2 PC/Web. --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HUMAN WEALTH — V18.6.2 PC / WEB</title>
@@ -302,6 +248,7 @@ h1,h2,h3{color:#15100a}
 .btn:hover,.btn.active,.mode:hover{background:linear-gradient(135deg,#1a160f,#050505);color:#f4d789;border-color:#d9ad4e}
 .answers.yesno{max-width:620px;margin:22px auto 0;grid-template-columns:1fr 1fr;gap:14px}.answers.yesno .btn{font-size:18px;padding:17px}.answers.yesno .yes-btn{border-color:#9d7a31}.answers.yesno .no-btn{border-color:#756b5a}
 .deep-analysis{margin-top:22px;padding:22px;border:1px solid #d4b66c;border-radius:20px;background:linear-gradient(145deg,#fffdf8,#f2e4c4);box-shadow:0 14px 34px #5f3b0818}.deep-analysis h2{margin-bottom:6px}.deep-analysis .analysis-lead{color:#625641;margin-top:0}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.analysis-panel{padding:16px;border:1px solid #d8c28d;border-radius:15px;background:#fffdf8}.analysis-panel h3{margin:0 0 9px;color:#805819}.analysis-panel ul{margin:0;padding-left:19px}.analysis-panel li{margin:7px 0;line-height:1.45}.analysis-priority{grid-column:1/-1;background:linear-gradient(135deg,#15110b,#050505);color:#fff4d8;border-color:#d7ab4c}.analysis-priority h3{color:#f0d184}.analysis-priority b{color:#f5d98a}@media(max-width:700px){.analysis-grid{grid-template-columns:1fr}.analysis-priority{grid-column:auto}}
+.deep-analysis{display:none!important}
 .score,.axis,.space,.package,.lesson,.book,.actionbox,.checkresult,.ai-enrich{border-color:#d8c28d!important;background:linear-gradient(145deg,#fffefa,#f4ead4)!important;box-shadow:0 10px 24px #62400b12}
 .score.r{border-color:#8f2323!important;background:linear-gradient(145deg,#c83e3e,#9f2727)!important}.score.o{border-color:#a85b08!important;background:linear-gradient(145deg,#ed941f,#c96a08)!important}.score.g{border-color:#17613d!important;background:linear-gradient(145deg,#2f9963,#1f744b)!important}
 .scoregrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0 28px}
@@ -346,7 +293,13 @@ function renderIntro(){const box=document.getElementById('app-intro');if(box)box
 function beliefQuestion(text){if(lang==='en')return `Do you agree with the following statement: “${text}”?`;if(lang==='es')return `¿Está de acuerdo con la siguiente afirmación: «${text}»?`;return `Êtes-vous d’accord avec l’affirmation suivante : « ${text} » ?`}
 function allQ(){return [...Q[lang].map(x=>[x[0],x[1],'yesno']),...BELIEFS[lang].map(x=>[T[lang].dims[5],beliefQuestion(x),'yesno'])]}
 function renderQuiz(){const q=allQ(),x=q[idx],instruction=lang==='fr'?'Répondez simplement par Oui ou Non.':lang==='es'?'Responda simplemente Sí o No.':'Simply answer Yes or No.';document.documentElement.lang=lang;document.querySelectorAll('.lang').forEach(b=>b.classList.toggle('active',b.dataset.l===lang));quiz.innerHTML=`<div class="hp-phase">${lang==='fr'?'Phase 1 · 50 questions Oui / Non':lang==='es'?'Fase 1 · 50 preguntas Sí / No':'Phase 1 · 50 Yes / No questions'}</div><div class="eyebrow">${T[lang].assessment}</div><h1>${T[lang].subtitle}</h1><p class="muted">${idx<25?T[lang].part1:T[lang].part2}<br>${instruction}</p><div class="bar"><i style="width:${(idx+1)/50*100}%"></i></div><p class="eyebrow" style="margin-top:20px">${T[lang].question} ${idx+1}/50 · ${x[0]}</p><h2>${x[1]}</h2><div class="answers yesno"><button class="btn yes-btn ${answers[idx]===10?'active':''}" onclick="setAnswer(10)">${T[lang].yes}</button><button class="btn no-btn ${answers[idx]===0?'active':''}" onclick="setAnswer(0)">${T[lang].no}</button></div>`}
-function setAnswer(v){answers[idx]=v;if(idx<49){idx++;renderQuiz()}else showResults()}
+function legacySetAnswer(v){
+  answers[idx]=Number(v);
+  if(idx<49){idx++;renderQuiz();return;}
+  idx=49;
+  if(typeof window.showResults==='function') window.showResults();
+  else if(typeof showResults==='function') showResults();
+}
 function scoreClass(v){return v<40?'r':v<70?'o':'g'}
 
 function hpFmt(sec){
@@ -574,7 +527,8 @@ function packages(){
   {name:'GROW',duration:'3 months',tagline:'to accelerate your progress',price:'€3,000',old:'€5,000',seconds:86400,benefit:'Everything in START + personalized support with tracked goals · Access to all 3 spaces · Progress over 90 days'},
   {name:'PREMIUM',duration:'6 months',tagline:'for a deep transformation',price:'€10,000',old:'€15,000',seconds:259200,benefit:'Everything in GROW + premium support with 2 sessions per week · Personalized strategy · 24/7 assistance'}
  ];
- return `<section class="packages"><div class="eyebrow">${T[lang].packages}</div><div class="packagegrid">${data.map(x=>`<article class="package"><h3>${x.name}</h3><div class="offer-duration">${x.duration}</div><div class="offer-tagline">${x.tagline}</div><div class="price">${x.price} <span class="old">${x.old}</span></div><p class="offer-benefit">${x.benefit}</p><div class="timer" data-seconds="${x.seconds}"><span class="glass">⌛</span><span class="time">${hpFmt(x.seconds)}</span></div><button type="button" class="commit-btn" onclick="hpOpenPayment('${x.name}','${x.price}')">${lang==='fr'?'Je m’engage':lang==='es'?'Me comprometo':'I’m in'}</button></article>`).join('')}</div></section>`;
+ const appointmentLabel='Validation et prise de rendez-vous — Contact direct via WhatsApp sur +33651212175';
+ return `<section class="packages"><div class="eyebrow">${T[lang].packages}</div><div class="packagegrid">${data.map(x=>`<article class="package"><h3>${x.name}</h3><div class="offer-duration">${x.duration}</div><div class="offer-tagline">${x.tagline}</div><div class="price">${x.price} <span class="old">${x.old}</span></div><p class="offer-benefit">${x.benefit}</p><div class="timer" data-seconds="${x.seconds}"><span class="glass">⌛</span><span class="time">${hpFmt(x.seconds)}</span></div><button type="button" class="commit-btn" onclick="hpOpenWhatsApp('${x.name}','${x.price}')">${appointmentLabel}</button></article>`).join('')}</div></section>`;
 }
 const HP_BOOKS={"goals": [["Atomic Habits", "James Clear", "Ce livre montre comment de petits changements répétés produisent de grands résultats. Il explique comment construire de bonnes habitudes et éliminer les mauvaises. L’auteur insiste sur l’importance du système plutôt que sur la simple volonté. Vous apprenez à rendre les bonnes actions faciles et les mauvaises plus difficiles. C’est un excellent guide pour progresser de façon durable."], ["Goals!", "Brian Tracy", "Brian Tracy propose une méthode claire pour définir, planifier et atteindre ses objectifs. Le livre insiste sur l’écriture des objectifs pour les rendre plus concrets. Il aide à clarifier le “pourquoi” derrière chaque ambition. Vous y trouverez des outils pour dépasser la procrastination et garder le cap. C’est un classique très pratique pour passer de l’idée à l’exécution."], ["The 7 Habits of Highly Effective People", "Stephen R. Covey", "Ce livre relie les objectifs à des principes de vie solides et à la responsabilité personnelle. Covey explique comment être proactif et prioriser ce qui compte vraiment. Il invite à penser à long terme plutôt qu’à réagir en permanence à l’urgence. On y apprend à aligner ses actions avec ses valeurs. C’est une base très forte pour construire une efficacité durable."], ["The ONE Thing", "Gary Keller et Jay Papasan", "Le livre repose sur une idée simple : se concentrer sur la priorité la plus importante. Il montre que la clarté augmente fortement la productivité. L’approche aide à réduire la dispersion et les tâches secondaires. Vous apprenez à identifier l’action qui rend les autres plus faciles ou inutiles. C’est très utile quand on veut avancer vite sans se perdre."], ["Measure What Matters", "John Doerr", "Ce livre présente la méthode OKR, utilisée pour fixer et suivre des objectifs ambitieux. Il montre comment transformer une vision en résultats mesurables. L’ouvrage insiste sur l’alignement, la transparence et le suivi régulier. Il est particulièrement adapté aux projets d’équipe et aux entreprises. C’est une référence pour piloter l’exécution avec rigueur."], ["Drive", "Daniel Pink", "Daniel Pink explique ce qui motive réellement les êtres humains. Il met en avant trois leviers : autonomie, maîtrise et sens. Le livre montre que les récompenses externes ne suffisent pas toujours. Il aide à créer une motivation plus profonde et plus stable. C’est très utile pour tenir sur la durée dans un projet ambitieux."], ["The 12-Week Year", "Brian P. Moran et Michael Lennington", "Ce livre propose de remplacer les objectifs annuels par des cycles de 12 semaines. L’idée est de créer plus d’urgence et de concentration. Le suivi hebdomadaire devient central pour éviter l’inertie. Vous avancez avec des priorités plus claires et des actions plus courtes. C’est une méthode puissante pour exécuter rapidement."], ["Succeed", "Heidi Grant Halvorson", "Ce livre explore la science de la réussite et les mécanismes psychologiques du succès. Il aide à choisir les bons objectifs et à éviter les erreurs fréquentes. L’auteure montre comment maintenir l’élan malgré les obstacles. On y trouve des conseils concrets pour rester motivé. C’est un bon choix si vous aimez une approche plus scientifique."], ["Your Best Year Ever", "Michael Hyatt", "Ce livre propose une méthode structurée pour fixer des objectifs cohérents avec ses priorités. Il met l’accent sur la clarté, la réflexion et la progression. L’approche aide à dépasser les blocages mentaux et les croyances limitantes. Vous apprenez à transformer une intention en plan d’action. C’est particulièrement utile pour organiser une année très productive."], ["Deep Work", "Cal Newport", "Ce livre montre la valeur du travail profond et sans distraction. Il explique comment produire des résultats de haute qualité en se concentrant réellement. L’auteur défend des périodes de concentration intense et protégée. Cela aide à avancer sur les projets importants plus vite. C’est un livre très fort pour ceux qui veulent obtenir des résultats sérieux."]], "finance": [["Père riche, Père pauvre", "Robert Kiyosaki", "Ce livre compare deux visions de l’argent et de la richesse. Il insiste sur l’importance des actifs plutôt que du simple revenu. Kiyosaki pousse à apprendre la finance personnelle dès que possible. Le livre aide à revoir ses croyances sur le travail et l’indépendance. C’est un classique pour changer son rapport à l’argent."], ["La psychologie de l’argent", "Morgan Housel", "L’ouvrage montre que les décisions financières sont souvent émotionnelles. Il explique pourquoi le comportement compte autant que les connaissances. Vous y apprendrez à éviter les excès de confiance et l’impulsivité. Le livre valorise la patience, la constance et le long terme. C’est une lecture très utile pour mieux gérer ses réactions face à l’argent."], ["L’homme le plus riche de Babylone", "George S. Clason", "Ce livre utilise des paraboles pour enseigner les bases de la richesse. Il met en avant l’épargne régulière et la discipline. Les règles sont simples, faciles à retenir et applicables au quotidien. Il rappelle qu’il faut vivre sous ses moyens pour accumuler du capital. C’est un excellent point de départ pour les débutants."], ["The Simple Path to Wealth", "JL Collins", "Le livre explique comment construire sa richesse de manière simple. Il défend une approche long terme centrée sur l’investissement indexé. L’auteur insiste sur les frais faibles et la régularité. Le style est direct, clair et très accessible. C’est un très bon guide pour investir sans complexité inutile."], ["I Will Teach You to Be Rich", "Ramit Sethi", "Ce livre propose une méthode concrète pour gérer son argent sans se priver. Il couvre l’automatisation de l’épargne, du budget et de l’investissement. L’approche est pratique et orientée action. Ramit Sethi parle aussi de dépenses intelligentes et de priorités personnelles. C’est idéal pour ceux qui veulent des résultats concrets rapidement."], ["L’investisseur intelligent", "Benjamin Graham", "C’est un grand classique de l’investissement de valeur. Le livre apprend à analyser avec prudence et à éviter les décisions émotionnelles. Il insiste sur la marge de sécurité et la discipline. Le contenu est plus technique, mais très formateur. C’est une référence pour bâtir une stratégie d’investissement sérieuse."], ["Your Money or Your Life", "Vicki Robin et Joe Dominguez", "Ce livre relie l’argent au temps de vie et aux choix personnels. Il invite à mesurer ce que coûte réellement chaque dépense. L’objectif est de reprendre le contrôle sur sa relation au travail et à la consommation. Le livre pousse vers une vie plus simple et plus consciente. Il convient très bien à ceux qui veulent plus de liberté financière."], ["Le millionnaire d’à côté", "Thomas J. Stanley et William D. Danko", "L’ouvrage étudie les comportements des personnes réellement riches. Il montre que beaucoup de millionnaires vivent de façon simple et disciplinée. Le livre casse plusieurs idées reçues sur le luxe et l’apparence. Il met l’accent sur l’épargne, l’investissement et la constance. C’est un bon livre pour comprendre la richesse durable."], ["La méthode Total Money Makeover", "Dave Ramsey", "Ce livre propose un plan clair pour sortir des dettes et reprendre le contrôle. Il suit une méthode étape par étape, très structurée. L’auteur met l’accent sur l’urgence, la discipline et les habitudes. C’est particulièrement utile pour les personnes qui veulent repartir à zéro. Le ton est direct et motivant."], ["Un pas vers la liberté financière", "Tony Robbins", "Le livre vulgarise des principes d’investissement et de gestion patrimoniale. Il aide à comprendre les bases sans être trop technique. Robbins met l’accent sur la vision long terme et la maîtrise du risque. Le livre rassemble de nombreuses idées issues d’experts financiers. C’est une bonne lecture pour élargir sa culture financière."]]};
 
@@ -666,8 +620,6 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
     });
   }
   trimPriorityAxes();
-  const mo=new MutationObserver(trimPriorityAxes);
-  mo.observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -685,7 +637,6 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
     });
   }
   hpApplyDirectClick();
-  new MutationObserver(hpApplyDirectClick).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -702,7 +653,6 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
     });
   }
   hpColorScores();
-  new MutationObserver(hpColorScores).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
@@ -719,7 +669,7 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
    if(['précédent','precedent','suivant','previous','next','anterior','siguiente'].includes(s)) b.remove();
   });
  }
- check(); new MutationObserver(check).observe(document.body,{childList:true,subtree:true});
+ check();
 })();
 </script>
 
@@ -745,14 +695,54 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
     });
   }
   enforce();
-  new MutationObserver(enforce).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
 
 
 <script>
 (function(){
+ window.hpOpenWhatsApp=function(plan,price){
+   const existing=document.getElementById('hp-whatsapp-box');
+   if(existing){existing.scrollIntoView({behavior:'smooth',block:'center'});return;}
+   const results=document.getElementById('results');
+   if(!results)return;
+   const box=document.createElement('section');
+   box.id='hp-whatsapp-box';
+   box.className='hp-paybox';
+   box.innerHTML=`<div class="hp-phase">${lang==='fr'?'Demande de rendez-vous Human Wealth':lang==='es'?'Solicitud de cita Human Wealth':'Human Wealth appointment request'}</div>
+     <h3>${lang==='fr'?'Vos coordonnées':lang==='es'?'Tus datos':'Your details'}</h3>
+     <p class="muted">${lang==='fr'?'Remplissez les quatre champs obligatoires. WhatsApp s’ouvrira ensuite avec un message prérempli.':lang==='es'?'Completa los cuatro campos obligatorios. WhatsApp se abrirá con un mensaje preparado.':'Complete the four required fields. WhatsApp will then open with a pre-filled message.'}</p>
+     <div class="hp-paygrid">
+       <input id="hp-wa-firstname" placeholder="${lang==='fr'?'Prénom obligatoire':lang==='es'?'Nombre obligatorio':'Required first name'}" autocomplete="given-name" required>
+       <input id="hp-wa-lastname" placeholder="${lang==='fr'?'Nom obligatoire':lang==='es'?'Apellido obligatorio':'Required last name'}" autocomplete="family-name" required>
+       <input id="hp-wa-phone" placeholder="${lang==='fr'?'Téléphone portable obligatoire':lang==='es'?'Móvil obligatorio':'Required mobile phone'}" autocomplete="tel" type="tel" required>
+       <input id="hp-wa-email" placeholder="${lang==='fr'?'E-mail obligatoire':lang==='es'?'Correo obligatorio':'Required email'}" autocomplete="email" type="email" required>
+       <input id="hp-wa-linkedin" placeholder="${lang==='fr'?'LinkedIn (optionnel)':lang==='es'?'LinkedIn (opcional)':'LinkedIn (optional)'}" autocomplete="url" type="url">
+       <input id="hp-wa-instagram" placeholder="${lang==='fr'?'Instagram (optionnel)':lang==='es'?'Instagram (opcional)':'Instagram (optional)'}" autocomplete="url" type="url">
+     </div>
+     <div class="hp-pay-actions"><button type="button" class="btn" onclick="hpSendWhatsApp('${plan}','${price}')">${lang==='fr'?'Demander mon rendez-vous sur WhatsApp':lang==='es'?'Solicitar mi cita por WhatsApp':'Request my WhatsApp appointment'}</button></div>
+     <div id="hp-wa-msg"></div>`;
+   results.appendChild(box);
+   box.scrollIntoView({behavior:'smooth',block:'center'});
+ };
+ window.hpSendWhatsApp=function(plan,price){
+   const first=(document.getElementById('hp-wa-firstname')?.value||'').trim();
+   const last=(document.getElementById('hp-wa-lastname')?.value||'').trim();
+   const phone=(document.getElementById('hp-wa-phone')?.value||'').trim();
+   const email=(document.getElementById('hp-wa-email')?.value||'').trim();
+   const linkedin=(document.getElementById('hp-wa-linkedin')?.value||'').trim();
+   const instagram=(document.getElementById('hp-wa-instagram')?.value||'').trim();
+   const msgBox=document.getElementById('hp-wa-msg');
+   if(!first||!last||!phone||!/^\S+@\S+\.\S+$/.test(email)){
+     if(msgBox)msgBox.innerHTML=`<p class="muted" style="color:#a22">${lang==='fr'?'Merci de compléter correctement les quatre champs obligatoires.':lang==='es'?'Completa correctamente los cuatro campos obligatorios.':'Please complete all four required fields correctly.'}</p>`;
+     return;
+   }
+   const social=(linkedin||instagram)?`%0A${encodeURIComponent(lang==='fr'?'Réseaux sociaux':lang==='es'?'Redes sociales':'Social links')} :${linkedin?`%0ALinkedIn : ${encodeURIComponent(linkedin)}`:''}${instagram?`%0AInstagram : ${encodeURIComponent(instagram)}`:''}`:'';
+   const text=lang==='fr'?`Bonjour, je souhaite demander un rendez-vous Human Wealth.%0A%0APrénom : ${encodeURIComponent(first)}%0ANom : ${encodeURIComponent(last)}%0ATéléphone : ${encodeURIComponent(phone)}%0AE-mail : ${encodeURIComponent(email)}${social}%0AOffre choisie : ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`:lang==='es'?`Hola, deseo solicitar una cita con Human Wealth.%0A%0ANombre : ${encodeURIComponent(first)}%0AApellido : ${encodeURIComponent(last)}%0ATeléfono : ${encodeURIComponent(phone)}%0ACorreo electrónico : ${encodeURIComponent(email)}${social}%0AOferta elegida : ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`:`Hello, I would like to request a Human Wealth appointment.%0A%0AFirst name: ${encodeURIComponent(first)}%0ALast name: ${encodeURIComponent(last)}%0AMobile phone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}${social}%0ASelected offer: ${encodeURIComponent(plan)} (${encodeURIComponent(price)})`;
+   window.open(`https://wa.me/33651212175?text=${text}`,'_blank','noopener');
+ };
  window.hpOpenPayment=function(plan,price){
+   return window.hpOpenWhatsApp(plan,price);
    const results=document.getElementById('results');
    if(!results)return;
    let box=document.getElementById('hp-payment-box');
@@ -887,7 +877,7 @@ document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>{lang=b.dataset.l;wi
    block.id=id; block.insertAdjacentHTML('beforeend',hpSatisfaction(id));
   });
  }
- attach(); new MutationObserver(attach).observe(document.body,{childList:true,subtree:true});
+ attach();
 })();
 </script>
 
@@ -1079,7 +1069,6 @@ answers=Array(50).fill(null);idx=0;renderQuiz();
   });
  }
  enforceBeliefScoreColor();
- new MutationObserver(enforceBeliefScoreColor).observe(document.getElementById('results'),{childList:true,subtree:true});
 })();
 </script>
 <script id="hw-previous-question-control">
@@ -1104,4 +1093,55 @@ answers=Array(50).fill(null);idx=0;renderQuiz();
 <script src="typologies.js"></script>
 <script src="typology-reading.js"></script>
 <script src="profiles-pdf.js"></script>
+<script id="hw-v1865-final-validation">
+(function(){
+  /* Final V18.6.5 correction: keep the V18.6.4 result engine, remove module 4,
+     and translate every appointment action after dynamic rendering. */
+  const appointmentLabels={
+    fr:'Validation et prise de rendez-vous — Contact direct via WhatsApp sur +33651212175',
+    en:'Validation and appointment request — Direct contact via WhatsApp at +33651212175',
+    es:'Validación y solicitud de cita — Contacto directo por WhatsApp en +33651212175'
+  };
+  const waLabels={
+    fr:'Demander mon rendez-vous sur WhatsApp',
+    en:'Request my appointment on WhatsApp',
+    es:'Solicitar mi cita por WhatsApp'
+  };
+  function finalResultAudit(){
+    document.querySelectorAll('#results .deep-analysis').forEach(el=>el.remove());
+    document.querySelectorAll('#results .commit-btn').forEach(btn=>btn.textContent=appointmentLabels[lang]||appointmentLabels.fr);
+    document.querySelectorAll('#results #hp-whatsapp-box .hp-pay-actions .btn').forEach(btn=>btn.textContent=waLabels[lang]||waLabels.fr);
+    document.querySelectorAll('#results [data-l="fr"],[data-l="en"],[data-l="es"]').forEach(el=>el.setAttribute('lang',el.dataset.l));
+  }
+  const previousShowResults=window.showResults;
+  window.showResults=function(){
+    previousShowResults();
+    finalResultAudit();
+  };
+  finalResultAudit();
+})();
+</script>
+<script id="hw-v1866-question50-fix">
+(function(){
+  window.setAnswer=function(value){
+    answers[idx]=Number(value);
+    if(idx<49){idx+=1;renderQuiz();return;}
+    idx=49;
+    if(typeof window.showResults==='function') window.showResults();
+    else if(typeof showResults==='function') showResults();
+  };
+})();
+</script>
+<script id="hw-v1867-question50-fallback">
+(function(){
+  const originalRenderQuiz=window.renderQuiz;
+  window.renderQuiz=function(){
+    originalRenderQuiz();
+    if(idx===49 && quiz.style.display!=='none' && !document.getElementById('hw-force-results')){
+      const label=lang==='fr'?'Afficher les résultats':lang==='es'?'Mostrar los resultados':'Show results';
+      quiz.insertAdjacentHTML('beforeend',`<button id="hw-force-results" type="button" class="btn" style="margin-top:18px;width:100%" onclick="window.showResults()">${label}</button>`);
+    }
+  };
+})();
+</script>
 </body></html>
