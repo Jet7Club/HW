@@ -36,7 +36,7 @@ async function prepareMail(e){
         'Accept':'application/json'
       },
       body:JSON.stringify({
-        access_key:'COLLE_TA_CLE_WEB3FORMS_ICI',
+        access_key:'d76a6e80-bb1e-4c88-b6cd-0c2d28653582',
         subject:`Human Wealth - ${plan} - ${d.first} ${d.last}`,
         from_name:'Human Wealth',
         email:d.email,
