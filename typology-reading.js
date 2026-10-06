@@ -75,15 +75,15 @@ document.write('<script src="typology-reading-base.js"><\/script>');
     const btn=document.querySelector('#hw-appt button[type="submit"]');
     if(!btn)return;
     const lg=window.lang||'fr';
-    btn.textContent=lg==='en'?'Your first appointment':lg==='es'?'Tu primera cita':'Votre premier rendez-vous';
+    const wanted=lg==='en'?'Your first appointment':lg==='es'?'Tu primera cita':'Votre premier rendez-vous';
+    if(btn.textContent!==wanted) btn.textContent=wanted;
   }
   new MutationObserver(updateAppointmentButton).observe(document.documentElement,{childList:true,subtree:true});
-  document.addEventListener('click',()=>setTimeout(updateAppointmentButton,0),true);
 })();
 
 window.addEventListener('load',function(){
   var s=document.createElement('script');
-  s.src='hw-offer-flow.js?v=20261006-2348';
+  s.src='hw-offer-flow.js?v=20261006-2358';
   s.async=false;
   document.body.appendChild(s);
 });
