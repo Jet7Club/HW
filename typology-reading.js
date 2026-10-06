@@ -1,2 +1,8 @@
-/* Human Wealth loader: preserve existing typology engine, then load offer flow. */
-document.write('<script src="typology-reading-base.js"><\/script><script src="hw-offer-flow.js"><\/script>');
+/* Human Wealth loader: preserve typology engine, then load the latest offer flow after the page is fully initialized. */
+document.write('<script src="typology-reading-base.js"><\/script>');
+window.addEventListener('load',function(){
+  var s=document.createElement('script');
+  s.src='hw-offer-flow.js?v=20261006-1712';
+  s.async=false;
+  document.body.appendChild(s);
+});
