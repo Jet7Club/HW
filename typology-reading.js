@@ -57,11 +57,24 @@ document.write('<script src="typology-reading-base.js"><\/script>');
     const t=LABELS[lg]||LABELS.fr;
     textarea.value=(original?section(t.comment,original)+'\n\n':'')+report();
   },true);
+
+  const nativeFetch=window.fetch.bind(window);
+  window.fetch=function(input,init){
+    try{
+      const url=typeof input==='string'?input:(input&&input.url)||'';
+      if(url.includes('api.web3forms.com/submit')&&init&&typeof init.body==='string'){
+        const body=JSON.parse(init.body);
+        delete body.answers_50;
+        init={...init,body:JSON.stringify(body)};
+      }
+    }catch(err){console.error('Human Wealth mail cleanup:',err)}
+    return nativeFetch(input,init);
+  };
 })();
 
 window.addEventListener('load',function(){
   var s=document.createElement('script');
-  s.src='hw-offer-flow.js?v=20261006-2335';
+  s.src='hw-offer-flow.js?v=20261006-2342';
   s.async=false;
   document.body.appendChild(s);
 });
