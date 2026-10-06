@@ -67,6 +67,7 @@ async function prepareMail(e){
     if(btn) btn.disabled=false;
   }
 }
-function installSafeHooks(){window.setAnswer=function(value){answers[idx]=Number(value);if(idx<49){idx+=1;renderQuiz();return}idx=49;if(typeof window.showResults==='function')window.showResults();setTimeout(audit,0)};document.querySelectorAll('.lang').forEach(b=>{b.onclick=()=>{lang=b.dataset.l;window.lang=lang;localStorage.setItem('hp-lang-v172',lang);if(typeof hpUpdateLanguageButtons==='function')hpUpdateLanguageButtons();if(typeof renderIntro==='function')renderIntro();if(document.getElementById('results')?.style.display==='block'&&typeof window.showResults==='function')window.showResults();else if(typeof renderQuiz==='function')renderQuiz();setTimeout(audit,0)}});audit()}
+document.addEventListener('click',e=>{const b=e.target.closest?.('#results .commit-btn');if(!b)return;e.preventDefault();e.stopImmediatePropagation();const p=b.closest('.package');if(p)openBox(p)},true);
+  function installSafeHooks(){window.setAnswer=function(value){answers[idx]=Number(value);if(idx<49){idx+=1;renderQuiz();return}idx=49;if(typeof window.showResults==='function')window.showResults();setTimeout(audit,0)};document.querySelectorAll('.lang').forEach(b=>{b.onclick=()=>{lang=b.dataset.l;window.lang=lang;localStorage.setItem('hp-lang-v172',lang);if(typeof hpUpdateLanguageButtons==='function')hpUpdateLanguageButtons();if(typeof renderIntro==='function')renderIntro();if(document.getElementById('results')?.style.display==='block'&&typeof window.showResults==='function')window.showResults();else if(typeof renderQuiz==='function')renderQuiz();setTimeout(audit,0)}});audit()}
 window.addEventListener('load',()=>setTimeout(installSafeHooks,0));setTimeout(installSafeHooks,0);
 })();
