@@ -70,11 +70,20 @@ document.write('<script src="typology-reading-base.js"><\/script>');
     }catch(err){console.error('Human Wealth mail cleanup:',err)}
     return nativeFetch(input,init);
   };
+
+  function updateAppointmentButton(){
+    const btn=document.querySelector('#hw-appt button[type="submit"]');
+    if(!btn)return;
+    const lg=window.lang||'fr';
+    btn.textContent=lg==='en'?'Your first appointment':lg==='es'?'Tu primera cita':'Votre premier rendez-vous';
+  }
+  new MutationObserver(updateAppointmentButton).observe(document.documentElement,{childList:true,subtree:true});
+  document.addEventListener('click',()=>setTimeout(updateAppointmentButton,0),true);
 })();
 
 window.addEventListener('load',function(){
   var s=document.createElement('script');
-  s.src='hw-offer-flow.js?v=20261006-2342';
+  s.src='hw-offer-flow.js?v=20261006-2348';
   s.async=false;
   document.body.appendChild(s);
 });
